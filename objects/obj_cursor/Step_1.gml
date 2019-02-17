@@ -5,5 +5,7 @@ switch(room){
 		
 		sl_tl[0] = mouse_x div global.cell_size;
 		sl_tl[1] = mouse_y div global.cell_size;
+		
+		tile_id  = global.dg_tile[# sl_tl[0],sl_tl[1]];
 	break;
 }

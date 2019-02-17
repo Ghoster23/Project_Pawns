@@ -1,15 +1,9 @@
-var cl = global.cell_size;
+draw_text(0,0,"Turn: " + string(turn_counter));
 
-#region Lines
-draw_set_color(c_blue);
-for(var i = 1; i < h_cells; i++){
-	var xx = i * cl;
-	draw_line( xx, 0, xx, room_height);
-}
+if(global.turn != noone){
+	draw_text(0,32,"Pawn: " + string(global.turn) + " " + object_get_name(global.turn.object_index));
 
-for(var j = 1; j < v_cells; j++){
-	var yy = j * cl;
-	draw_line( 0, yy, room_width, yy);
+	if(instance_exists(global.turn)){
+		draw_text(0,64,"Move: " + string(global.turn.move) + " Act: " + string(global.turn.act));
+	}
 }
-draw_set_color(c_white);
-#endregion
