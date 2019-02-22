@@ -1,7 +1,7 @@
 #region Moving
 if(mov_trg != noone){
 	switch mov_stt {
-		case 0: //Determine enxt step
+		case 0: //Determine next step
 			mov_nxt = ds_stack_pop(mov_path);
 			mov_stt = 1;
 		break;
@@ -39,3 +39,45 @@ if(mov_trg != noone){
 	}
 }
 #endregion
+
+#region Acting
+if(act_cur != -1){
+	switch act_stt {
+		case 0: //Initiate action
+			var params = scr_action_start(act_cur);
+			
+			act_trgs   = params[0];
+			act_params = params[1];
+			
+			if(act_trgs == -1){
+				act_cur = -1;
+			}else {
+				act_stt = 1;
+			}
+		break;
+		
+		case 1: //Choose target
+			
+		break;
+		
+		case 2: //Carry out action
+			scr_action_do(act_cur,act_trg,act_params);
+		break;
+		
+		case 3: //End action
+			act = 1;
+			act_stt =  0;
+			act_cur = -1;
+			
+			ds_list_destroy(act_trgs);
+			act_trgs   = -1;
+			act_params = -1;
+		break;
+	}
+}
+#endregion
+
+max_hp = 5;
+hp     = 5;
+
+scr_statuses_init();
