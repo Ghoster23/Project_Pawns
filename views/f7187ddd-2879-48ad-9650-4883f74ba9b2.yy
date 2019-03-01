@@ -6,7 +6,8 @@
     "children": [
         "063a1891-e073-4594-8f5d-a53fe1f1a34b",
         "c487a45d-c745-446b-b6d1-9594bb173e12",
-        "1c0513bd-731c-4875-97ae-b032a8040606"
+        "1c0513bd-731c-4875-97ae-b032a8040606",
+        "3cf5395c-eb36-429e-8773-9d86342c58bd"
     ],
     "filterType": "GMScript",
     "folderName": "Graphics",

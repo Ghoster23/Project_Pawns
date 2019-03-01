@@ -7,4 +7,6 @@ if(global.turn == id){
 		global.turn = noone;
 	}
 }
+
+offs = z;
 #endregion

@@ -1,5 +1,10 @@
 event_inherited();
 
+z = 0;
+offset = true;
+
+draw_script = scr_draw_pawn;
+
 #region Action
 act  = 0; //[0 - Can't act | 1 - Act done | 2 - Can act]
 

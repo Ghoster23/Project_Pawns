@@ -1,3 +1,4 @@
+#region Init
 if(init_state == 1){	
 	var lf = cl_x > 0;
 	var rg = cl_x < (room_width div cl_sz) - 1;
@@ -16,3 +17,14 @@ if(init_state == 1){
 	
 	init_state = 2;
 }
+#endregion
+
+#region Free
+var obj = global.dg_objs[# cl_x, cl_y];
+
+if(not is_undefined(obj) and instance_exists(obj)){
+	free = false;
+}else {
+	free = true;
+}
+#endregion
