@@ -4,7 +4,7 @@ if(mov_trg != noone){
 		case 0: //Determine next step
 			mov_stt = 1;
 			mov_dst = point_distance(x,y,mov_nxt.x,mov_nxt.y);
-			mov_spd = 4.5;
+			mov_spd = 3.5;
 			z = 0;
 		break;
 		
@@ -20,7 +20,7 @@ if(mov_trg != noone){
 				
 				var pelv = sin(perc * pi);
 				
-				z = pelv * (mov_dst / 2);				
+				z = pelv * 48;				
 			}else {
 				mov_stt = 2;
 			}
@@ -66,7 +66,7 @@ if(act_cur != -1){
 		break;
 		
 		case 2: //Carry out action
-			scr_action_do(act_cur,act_trg,act_params);
+			scr_action_do(act_cur,act_trgs,act_params);
 		break;
 		
 		case 3: //End action

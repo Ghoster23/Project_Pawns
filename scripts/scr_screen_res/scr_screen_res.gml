@@ -1,40 +1,41 @@
-
 #region App Surface
 application_surface_draw_enable(false);
 
-if(window_get_fullscreen()){
-	s_wd = global.MonitorW;
-	s_hg = global.MonitorH;
-	
+if(global.fullscreen){
+	var working_wd = global.Monitor_wd;
+	var working_hg = global.Monitor_hg;
 }else {	
-	s_wd = window_get_width();
-	s_hg = window_get_height();
+	var working_wd = window_get_width();
+	var working_hg = window_get_height();
 }
+
+var working_asr = working_wd/working_hg;
 
 switch room {	
 	default:
-		wd = room_width;
-		hg = room_height;
-		
-		if(s_hg/hg < s_wd/wd){
-			global.cam_ratio = s_hg/hg;
+		if(global.cam_asr < working_asr){
+			global.cam_cvr = working_hg div global.cam_hg;
+			
+			surface_hg = global.cam_hg * global.cam_cvr;
+			surface_wd = surface_hg    * global.cam_asr;
+			
 		}else {
-			global.cam_ratio = s_wd/wd;
+			global.cam_cvr = working_wd div global.cam_wd;
+			
+			surface_wd = global.cam_wd * global.cam_cvr;
+			surface_hg = surface_wd    / global.cam_asr;
 		}
 	break;
 }
 
-var sc_wd = wd * global.cam_ratio;
-var sc_hg = hg * global.cam_ratio;
+surface_resize(application_surface, surface_wd, surface_hg);
 
-surface_resize(application_surface, sc_wd, sc_hg);
-
-global.Xoffset = (s_wd - sc_wd)/2;
-global.Yoffset = (s_hg - sc_hg)/2;
+global.Xoffset = (working_wd - surface_wd) / 2;
+global.Yoffset = (working_hg - surface_hg) / 2;
 #endregion
 
 #region GUI
-display_set_gui_size(sc_wd,sc_hg);
+display_set_gui_size(surface_wd, surface_hg);
 
 global.gui_WD = display_get_gui_width();
 global.gui_HG = display_get_gui_height();

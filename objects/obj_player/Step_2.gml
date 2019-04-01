@@ -11,11 +11,4 @@ if(global.turn == id){
 }
 
 offs = z;
-
-
-if(mov_listen > 0){
-	image_blend = c_purple;
-}else {
-	image_blend = c_orange;
-}
 #endregion

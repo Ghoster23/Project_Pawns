@@ -338,7 +338,7 @@
             "Key": "458e83ca-f5b4-4562-bc2b-ef2c4b8d5008",
             "Value": {
                 "id": "97bba5cb-1e81-4115-9e50-676b5eee06fa",
-                "resourcePath": "objects\\obj_pawn_key_controlled\\obj_pawn_key_controlled.yy",
+                "resourcePath": "objects\\obj_player\\obj_player.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -371,6 +371,14 @@
             "Value": {
                 "id": "c90abaa7-fa03-44eb-b686-dd72d5693084",
                 "resourcePath": "sprites\\spr_solid\\spr_solid.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "507e90b5-aabc-4dae-a5ed-31afc87e317e",
+            "Value": {
+                "id": "68b46395-3447-42d7-88ed-46e44b0f0ef4",
+                "resourcePath": "sprites\\sprite79\\sprite79.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -447,11 +455,11 @@
             }
         },
         {
-            "Key": "771c89aa-1151-48ae-be2e-2458b5c2b8d7",
+            "Key": "7769f2f8-e067-44d7-8907-3f641dd2194e",
             "Value": {
-                "id": "5ae97229-05ea-4505-aede-2f91356f477b",
-                "resourcePath": "objects\\obj_player\\obj_player.yy",
-                "resourceType": "GMObject"
+                "id": "58930001-4bad-4169-98f0-7a3b6d6286c2",
+                "resourcePath": "sprites\\spr_shadow\\spr_shadow.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -484,6 +492,14 @@
                 "id": "b213c0bc-b178-447e-9f3f-f668a1696b5d",
                 "resourcePath": "scripts\\is_descended\\is_descended.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "7d5af46f-457a-4ae2-b9ee-2209cf844a4c",
+            "Value": {
+                "id": "c12b2f52-4300-4ac6-8083-14013662339b",
+                "resourcePath": "objects\\obj_camera\\obj_camera.yy",
+                "resourceType": "GMObject"
             }
         },
         {
