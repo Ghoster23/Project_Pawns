@@ -16,8 +16,8 @@ global.Monitor_hg = display_get_height(); //Monitor height
 global.Monitor_asr = global.Monitor_wd / global.Monitor_hg; //Monitor aspect ratio
 
 //Camera
-global.cam_wd  = 960; //Default camera width
-global.cam_hg  = 540; //Default camera heigth
+global.cam_wd  = 1792; //Default camera width
+global.cam_hg  = 1024; //Default camera heigth
 
 global.cam_asr = global.cam_wd/global.cam_hg; //Default camera aspect ratio
 global.cam_cvr = 1;                           //Default camera conversion ratio
@@ -25,13 +25,15 @@ global.cam_cvr = 1;                           //Default camera conversion ratio
 
 #region Calculations
 if(global.cam_asr < global.Monitor_wd/global.Monitor_hg){
-	global.cam_cvr = global.Monitor_wd div global.cam_hg;
-	global.cam_hg  = global.Monitor_wd div global.cam_cvr;
+	global.cam_cvr = global.Monitor_hg div global.cam_hg;
+	
+	global.cam_hg  = global.Monitor_hg div global.cam_cvr;
 	global.cam_wd  = global.cam_hg      *  global.Monitor_asr;
 			
 }else {
-	global.cam_cvr = global.Monitor_hg div global.cam_wd;
-	global.cam_wd  = global.Monitor_hg div global.cam_cvr;
+	global.cam_cvr = global.Monitor_wd div global.cam_wd;
+	
+	global.cam_wd  = global.Monitor_wd div global.cam_cvr;
 	global.cam_hg  = global.cam_wd      /  global.Monitor_asr;
 }
 

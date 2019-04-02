@@ -16,11 +16,19 @@ switch room {
 		if(global.cam_asr < working_asr){
 			global.cam_cvr = working_hg div global.cam_hg;
 			
+			if(global.cam_cvr == 0){
+				global.cam_cvr = working_hg / global.cam_hg;
+			}
+			
 			surface_hg = global.cam_hg * global.cam_cvr;
 			surface_wd = surface_hg    * global.cam_asr;
 			
 		}else {
 			global.cam_cvr = working_wd div global.cam_wd;
+			
+			if(global.cam_cvr == 0){
+				global.cam_cvr = working_wd / global.cam_wd;
+			}
 			
 			surface_wd = global.cam_wd * global.cam_cvr;
 			surface_hg = surface_wd    / global.cam_asr;
