@@ -17,7 +17,7 @@ var working_asr = working_wd/working_hg;
 
 switch room {	
 	default:
-		if(global.cam_asr < working_asr){
+		if(global.cam_asr <= working_asr){
 			if(pp){
 				global.cam_cvr = working_hg div global.cam_hg;
 			
@@ -28,8 +28,8 @@ switch room {
 				global.cam_cvr = working_hg / global.cam_hg;
 			}
 			
-			surface_hg  = global.cam_hg * global.cam_cvr;
-			surface_wd = surface_hg		 * global.cam_asr;
+			surface_hg = global.cam_hg * global.cam_cvr;
+			surface_wd = surface_hg	   * global.cam_asr;
 			
 		}else {
 			if(pp){
@@ -43,7 +43,7 @@ switch room {
 			}
 			
 			surface_wd = global.cam_wd * global.cam_cvr;
-			surface_hg  = surface_wd        / global.cam_asr;
+			surface_hg = surface_wd    / global.cam_asr;
 		}
 	break;
 }
@@ -51,7 +51,7 @@ switch room {
 surface_resize(application_surface, surface_wd, surface_hg);
 
 global.Xoffset = (working_wd - surface_wd) / 2;
-global.Yoffset = (working_hg  - surface_hg)  / 2;
+global.Yoffset = (working_hg - surface_hg) / 2;
 #endregion
 
 #region GUI
@@ -59,7 +59,7 @@ if(ag){
 	display_set_gui_size(surface_wd, surface_hg);
 
 	global.gui_WD = display_get_gui_width();
-	global.gui_HG  = display_get_gui_height();
+	global.gui_HG = display_get_gui_height();
 
 	global.gui_ratio = global.gui_WD / 640;
 }

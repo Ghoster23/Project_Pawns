@@ -1,4 +1,3 @@
-///@argument pp
 ///@argument monitor_width
 ///@argument monitor_height
 ///@argument rooms
@@ -7,25 +6,24 @@ if(room != 0){
 	return;
 }
 
-var pp	= argument0;
-var mw	= argument1;
-var mh	= argument2;
-var rm	= argument3;
+var mw	= argument0;
+var mh	= argument1;
+var rm	= argument2;
 
 var ma = mw / mh;
 
 #region Calculations
-if(global.cam_asr > mw/mh){
-	global.cam_cvr = mh	/ global.cam_hg;
+if(global.cam_asr <= mw/mh){
+	global.cam_cvr = mh	div global.cam_hg;
 	
-	global.cam_hg  = mh / global.cam_cvr;
+	global.cam_hg = mh / global.cam_cvr;
 	global.cam_wd = global.cam_hg * ma;
 			
 }else {
-	global.cam_cvr = mw  /  global.cam_wd;
+	global.cam_cvr = mw div global.cam_wd;
 	
 	global.cam_wd = mw / global.cam_cvr;
-	global.cam_hg  = global.cam_wd / ma;
+	global.cam_hg = global.cam_wd / ma;
 }
 
 global.cam_asr = global.cam_wd / global.cam_hg;

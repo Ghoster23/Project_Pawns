@@ -31,7 +31,7 @@ global.cam_cvr = 1;                           //Default camera conversion ratio
 #region Adjustments
 lvl_rooms = [room0];
 
-scr_adjust_views_to_monitor(pixelperfect, global.Monitor_wd, global.Monitor_hg, lvl_rooms);
+scr_adjust_views_to_monitor(global.Monitor_wd, global.Monitor_hg, lvl_rooms);
 
 if(global.fullscreen){
 	scr_adjust_app_gui_surfaces(pixelperfect, global.Monitor_wd, global.Monitor_hg, true);

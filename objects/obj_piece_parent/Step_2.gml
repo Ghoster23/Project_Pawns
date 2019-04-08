@@ -9,8 +9,9 @@ if(xx != prv_x or yy != prv_y){
 	global.dg_objs[# px, py] = noone;
 	global.dg_objs[# xx, yy] = other.id;
 	
-	with(global.dg_tile[# px, py]){ free = true;  }
-	with(global.dg_tile[# xx, yy]){ free = false; }
+	with(tile){ free = true;  }
+	tile = global.dg_tile[# xx, yy];
+	with(tile){ free = false; }
 	
 	prv_x = xx;
 	prv_y = yy;

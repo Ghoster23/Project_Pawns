@@ -7,7 +7,9 @@ prv_y = y div global.cell_size;
 
 global.dg_objs[# prv_x, prv_y] = id;
 
-with(global.dg_tile[# prv_x, prv_y]){
+tile = global.dg_tile[# prv_x, prv_y];
+
+with(tile){
 	free = false;
 }
 

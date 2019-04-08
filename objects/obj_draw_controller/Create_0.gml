@@ -5,3 +5,6 @@ ds_depthgrid = ds_grid_create(2,1);
 camera = room_get_camera(room,0);
 cam_wd = camera_get_view_width(camera);
 cam_hg = camera_get_view_height(camera);
+
+highlights = ds_map_create();
+colors = [c_red,c_green,c_blue];

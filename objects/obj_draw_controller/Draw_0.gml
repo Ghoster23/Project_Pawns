@@ -1,27 +1,38 @@
 #region Highlighted Tiles
 var cl = global.cell_size;
 
-var hg_m_l = obj_board_controller.mov_list;
-
-if(hg_m_l != -1){
-	draw_set_alpha(0.3);
-	gpu_set_blendmode(bm_add);
+draw_set_alpha(0.3);
+gpu_set_blendmode(bm_add)
 	
-	var  i = 0;
-	var tl = hg_m_l[| i];
+var color = ds_map_find_first(highlights);
 	
-	#region Draw Highlights
-	while(not is_undefined(tl)){
-		draw_rectangle(tl.x,tl.y,tl.x+cl,tl.y+cl,false);
-		i += 1;
-		tl = hg_m_l[| i];
+#region Iterate through colors
+while(!is_undefined(color)){
+	var list = ds_map_find_value(highlights, color);
+		
+	#region Get list
+	while(!is_undefined(list) and ds_exists(list,ds_type_list)){
+		var  i = 0;
+		var tl = list[| i];
+	
+		#region Draw Highlights
+		while(not is_undefined(tl)){
+			draw_set_color(color);
+			draw_rectangle(tl.x,tl.y,tl.x+cl,tl.y+cl,false);
+			i += 1;
+			tl = list[| i];
+		}
+		#endregion
 	}
 	#endregion
-	
-	gpu_set_blendmode(bm_normal);
-	draw_set_alpha(1);
-	draw_set_color(c_white);
+		
+	color = ds_map_find_next(highlights, color);
 }
+#endregion
+
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+draw_set_color(c_white);
 
 var sl_p = obj_cursor.sl_tl;
 
@@ -69,7 +80,6 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 	
 	repeat(instNum){
 		var instanceID = ds_depthgrid[# 0, yy];
-		var instanceY  = ds_depthgrid[# 1, yy];
 		
 		#region Instances
 		with(instanceID){
@@ -93,6 +103,6 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 	#endregion
 	
 }else {
-	ds_depth_grid = ds_grid_create(2,1);
+	ds_depthgrid = ds_grid_create(2,1);
 }
 #endregion
