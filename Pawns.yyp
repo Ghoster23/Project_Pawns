@@ -359,6 +359,14 @@
             }
         },
         {
+            "Key": "42d87d56-257c-4e9a-abb4-f20f2788d79b",
+            "Value": {
+                "id": "ef66418c-db12-495b-93be-f58fcea9c43e",
+                "resourcePath": "scripts\\scr_spell_cast\\scr_spell_cast.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "4336f04e-cdba-4dd2-a8d1-5d10a2738fe2",
             "Value": {
                 "id": "4769d134-105c-4c6b-ae50-daef3bc10154",
@@ -1213,6 +1221,7 @@
         "9358c16f-6150-494f-9040-f07aa8d64cc7",
         "2c405059-3362-4e77-acab-38b329cf904c",
         "5a658993-7cd2-484a-91e2-616afbb2ab39",
+        "42d87d56-257c-4e9a-abb4-f20f2788d79b",
         "1eea0adf-6108-484f-96b0-4af211648474",
         "eefa8d5e-1502-42d3-bcf9-f7195c490e86",
         "35b24854-7d53-48b8-9731-3b82f99ac9b4",

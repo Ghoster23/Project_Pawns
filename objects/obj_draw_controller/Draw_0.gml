@@ -11,10 +11,10 @@ while(!is_undefined(color)){
 	var list = ds_map_find_value(highlights, color);
 		
 	#region Get list
-	while(!is_undefined(list) and ds_exists(list,ds_type_list)){
+	if(!is_undefined(list) and ds_exists(ds_type_list,list)){
 		var  i = 0;
 		var tl = list[| i];
-	
+		
 		#region Draw Highlights
 		while(not is_undefined(tl)){
 			draw_set_color(color);

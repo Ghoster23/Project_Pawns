@@ -6,7 +6,8 @@
     "children": [
         "9358c16f-6150-494f-9040-f07aa8d64cc7",
         "2c405059-3362-4e77-acab-38b329cf904c",
-        "a1032070-af3f-442c-b0c8-07e15d299ce6"
+        "a1032070-af3f-442c-b0c8-07e15d299ce6",
+        "42d87d56-257c-4e9a-abb4-f20f2788d79b"
     ],
     "filterType": "GMScript",
     "folderName": "Spells",

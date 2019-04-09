@@ -1,6 +1,8 @@
 ///@description Target
 switch trg_state {
 	case 0: //Determine Targetable tiles
+		var info = [-1,-1];
+		
 		switch trg_param[0] {
 			default:
 			break;
@@ -8,11 +10,15 @@ switch trg_state {
 			case target_param.aoe:
 			case target_param.wall:
 			case target_param.line:
-				trg_lst_trgable = scr_search_flood(caster.tile, true, 3);
+				info = scr_search_flood(caster.tile, true, 4);
+				trg_lst_trgable = info[0];
+				ds_map_destroy(info[1]);
 			break;
 		
 			case target_param.touch:
-				trg_lst_trgable = scr_search_flood(caster.tile, true, 1);
+				info = scr_search_flood(caster.tile, true, 1);
+				trg_lst_trgable = info[0];
+				ds_map_destroy(info[1]);
 			break;
 		
 			case target_param.me:
@@ -20,7 +26,7 @@ switch trg_state {
 				ds_list_add( trg_lst_trgable, caster.tile);
 			break;
 		}
-		
+		scr_debug_message_ds_list(trg_lst_trgable);
 		//Highlight targetable spots
 		ds_map_add(obj_draw_controller.highlights, c_green, trg_lst_trgable);
 		
@@ -29,7 +35,7 @@ switch trg_state {
 	
 	case 1: //Wait for selection and calculate affected tiles
 		#region Select and check tile
-		if(global.key_active[key_id.m_click]) {
+		if(global.key_active[key_id.move]) {
 			if(ds_list_find_index( trg_lst_trgable, sl_tl) != -1){
 				#region Determine affected tiles
 				switch trg_param[0] {
