@@ -1,0 +1,2 @@
+scr_debug_message_ds_map(obj_draw_controller.highlights);
+scr_debug_message_ds_list(targets);

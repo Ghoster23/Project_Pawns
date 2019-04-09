@@ -1,5 +1,7 @@
 /// @description State Machine
 
+sl_tl = obj_cursor.tile_id;
+
 switch state {
 	case 0: //Target
 		if(trg_state == 2){

@@ -11,7 +11,7 @@ while(!is_undefined(color)){
 	var list = ds_map_find_value(highlights, color);
 		
 	#region Get list
-	if(!is_undefined(list) and ds_exists(ds_type_list,list)){
+	if(!is_undefined(list) ){
 		var  i = 0;
 		var tl = list[| i];
 		

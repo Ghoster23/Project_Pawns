@@ -6,83 +6,29 @@ var tile = argument0;
 var dirs = argument1;
 var rng  = argument2;
 
-var icnt = array_length_1d(dirs);
+var dcnt = array_length_1d(dirs);
 
 if(is_undefined(tile)){ return -1; }
 
 if(rng > 0){
-	var res   = ds_list_create();  //List of reachable tiles
-	var r_cnt = 0;                 //Count of tiles reachable
+	var res    = ds_list_create();  //List of reachable tiles
+	var r_cnt = 0;                          //Count of tiles reachable
+	
 	var path  = ds_map_create();   //Map that contains the path (Key -> Tile id | Value -> Tile ids of tiles that reach Key tile)
 	
-	var check = ds_queue_create(); //Tiles to check next iteration
-	var cnt   = 0;                 //Count of tiles to check
+	var check = ds_queue_create(); //Tiles to check in the nth iteration
 	
-	#region First ITR
-	with(tile){
-		for(var i = 0; i < icnt; i++){
-			if(adj[dirs[i]] != noone){
-				var tl = adj[dirs[i]];
-				if(i < 4 || (rng > 1 && i >= 4)){
-					if(tl.free){                     //If tile is free
-						tl.srch_vis = true;          //Mark it as visited
-						ds_queue_enqueue(check,tl);  //Add it to next iteration's queue
-						cnt += 1;                    //Update queue length
-						ds_map_add(path,tl,tile);    //Add it to path
-						ds_list_add(res,tl);         //Add it to list of reachable tiles
-						r_cnt += 1;
-					}
-				}else if(rng > 1){
-					if(tl.free){                     //If tile is free
-						tl.srch_vis = true;          //Mark it as visited
-						ds_queue_enqueue(check,tl);  //Add it to next iteration's queue
-						cnt += 1;                    //Update queue length
-						ds_map_add(path,tl,tile);    //Add it to path
-						ds_list_add(res,tl);         //Add it to list of reachable tiles
-						r_cnt += 1;
-					}
-				}
-			}
-		}
-	}
-	rng -= 1;
-	#endregion
+	ds_queue_enqueue(check,tile);  //Place the beggining tile in the search queue
 	
-	var n_check = ds_queue_create();
-	var n_cnt  = 0;
+	var n_check = ds_queue_create(); //Tiles to check in the nth+1 iteration
 	
 	while(rng > 0){
-		while(cnt > 0){
-			tile = ds_queue_dequeue(check);  //Get next tile to expand
-			cnt -= 1;                        //Update queue length
-			
-			with(tile){
-				for(var i = 0; i < icnt; i++){
-					if(adj[dirs[i]] != noone){
-						var tl = adj[dirs[i]];
-						if(i < 4 || ( i >= 4 && rng > 1)){
-							if(tl.free and not tl.srch_vis){   //If tile is free and not visited by search
-								tl.srch_vis = true;            //Has been visited by search
-								ds_queue_enqueue(n_check,tl);  //Add it to tiles to check queue
-								n_cnt += 1;                    //Update queue length
-								ds_map_add(path,tl,tile);      //Add it to path
-								ds_list_add(res,tl);           //Add it to the list of reachable tiles
-								r_cnt += 1;
-							}
-						}
-					}
-				}
-			}
-		}
+		r_cnt = scr_board_search_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt]);
 		
-		#region Swap vars
+		#region Swap queues
 		var temp = n_check;
 		n_check   = check;
-		check     = temp;
-		
-		temp  = n_cnt;
-		n_cnt = cnt;
-		cnt   = 0;
+		check       = temp;
 		#endregion
 		
 		rng -= 1;

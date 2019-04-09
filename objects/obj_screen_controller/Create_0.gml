@@ -1,6 +1,8 @@
 application_surface_draw_enable(false);
 if(scr_unique_inst()) {exit;}
 
+over = false;
+
 alarm[0] = 5;
 
 surface_wd = 0;

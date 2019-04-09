@@ -10,7 +10,7 @@ switch trg_state {
 			case target_param.aoe:
 			case target_param.wall:
 			case target_param.line:
-				info = scr_search_flood(caster.tile, true, 4);
+				info = scr_search_flood(caster.tile, true, 1);
 				trg_lst_trgable = info[0];
 				ds_map_destroy(info[1]);
 			break;
@@ -45,7 +45,7 @@ switch trg_state {
 					case target_param.aoe:
 					case target_param.wall:
 					case target_param.line:
-						targets = scr_spell_target_list(sl_tl,trg_param[1],trg_param[2],trg_param[3]);
+						targets = scr_spell_target_list(sl_tl,trg_param[0],trg_param[1],trg_param[2]);
 					break;
 		
 					case target_param.touch:
@@ -71,6 +71,10 @@ switch trg_state {
 		ds_list_destroy(trg_lst_trgable);
 		trg_lst_trgable = -1;
 		ds_map_add(obj_draw_controller.highlights, c_red, targets);
-		
+		trg_state = 3;
+	break;
+	
+	case 3: //Blocked
+	
 	break;
 }
