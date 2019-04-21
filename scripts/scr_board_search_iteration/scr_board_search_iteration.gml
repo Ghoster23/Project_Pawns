@@ -29,8 +29,8 @@ while(!is_undefined(c_tile) and instance_exists(c_tile)){
 					tl.srch_vis = true;                            //Mark it as visited
 					ds_queue_enqueue(n_check,tl);  //Add it to next iteration's queue
 			
-					ds_map_add(path,tl,tl);  //Add it to path
-					ds_list_add(res,tl);           //Add it to list of reachable tiles
+					ds_map_add(path,tl,c_tile);  //Add it to path
+					ds_list_add(res,tl);                  //Add it to list of reachable tiles
 					r_cnt += 1;
 				}
 			}

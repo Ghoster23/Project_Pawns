@@ -5,6 +5,7 @@
 var tile = argument0;
 var dirs = argument1;
 var rng  = argument2;
+var tpr = argument3;
 
 var dcnt = array_length_1d(dirs);
 
@@ -12,9 +13,14 @@ if(is_undefined(tile)){ return -1; }
 
 if(rng > 0){
 	var res    = ds_list_create();  //List of reachable tiles
-	var r_cnt = 0;                          //Count of tiles reachable
+	ds_list_add(res, tile);
+	tile.srch_vis = true;
+	tile.srch_rng = rng + (tpr != 1 ? 1 : 0);
+	
+	var r_cnt = 1;   //Count of tiles reachable
 	
 	var path  = ds_map_create();   //Map that contains the path (Key -> Tile id | Value -> Tile ids of tiles that reach Key tile)
+	ds_map_add(path,"Start",tile);
 	
 	var check = ds_queue_create(); //Tiles to check in the nth iteration
 	
@@ -23,7 +29,11 @@ if(rng > 0){
 	var n_check = ds_queue_create(); //Tiles to check in the nth+1 iteration
 	
 	while(rng > 0){
-		r_cnt = scr_board_search_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt]);
+		if(tpr != 1){
+			r_cnt = scr_board_search_tapered_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt],tpr);
+		}else {
+			r_cnt = scr_board_search_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt]);
+		}
 		
 		#region Swap queues
 		var temp = n_check;
@@ -32,11 +42,13 @@ if(rng > 0){
 		#endregion
 		
 		rng -= 1;
+		scr_debug_message_ds_list(res);
 	}
 	
 	for(var i = 0; i < r_cnt; i++){
 		var tl = res[| i];
 		tl.srch_vis = false;
+		tl.srch_rng = 0;
 	}
 
 	ds_queue_destroy(check);

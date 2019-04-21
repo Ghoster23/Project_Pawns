@@ -13,6 +13,7 @@ adj = [noone,noone,noone,noone,noone,noone,noone,noone];
 free = true;
 
 srch_vis = false;
+srch_rng = 0;
 #endregion
 
 max_hp = 3;

@@ -8,5 +8,5 @@ var rng  = argument2;
 
 if(is_undefined(tile)){ return -1; }
 
-return scr_board_search(tile,[dir],rng);
+return scr_board_search(tile,[dir],rng,1);
 }

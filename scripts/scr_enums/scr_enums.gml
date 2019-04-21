@@ -24,18 +24,13 @@ enum target_param {
 	line,
 	aoe,//TODO Maybe rethink this one
 	touch,
-	me,
 	wall
 	//Consider how you'd add seeking
 }
 
 enum target_mod {
-	front,
-	right,
-	back,
-	left,
-	cardinal,
-	omnidir
+	range,
+	await
 	//Maybe add a 'await' target -> consider how to make triggers
 }
 
