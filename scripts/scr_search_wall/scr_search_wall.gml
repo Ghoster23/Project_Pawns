@@ -35,5 +35,5 @@ switch dir {
 
 if(is_undefined(tile)){ return -1; }
 
-return scr_board_search(tile,dirs,rng,1);
+return scr_board_search(tile,dirs,rng,1,1);
 }

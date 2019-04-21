@@ -10,7 +10,8 @@ init_state = 0;
 
 adj = [noone,noone,noone,noone,noone,noone,noone,noone];
 
-free = true;
+free    = true;  //Pawn  is not on it
+blocked = false; //Solid is not on it
 
 srch_vis = false;
 srch_rng = 0;

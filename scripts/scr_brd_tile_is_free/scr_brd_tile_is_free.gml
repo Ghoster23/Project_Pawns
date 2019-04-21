@@ -11,7 +11,7 @@ if(0 <= col and col < obj_board_controller.h_cells and
 	var tl = global.dg_tile[# col, row];
 	
 	if(not is_undefined(tl) and instance_exists(tl)){
-		return tl.free;
+		return not tl.blocked;
 	}
 }
 

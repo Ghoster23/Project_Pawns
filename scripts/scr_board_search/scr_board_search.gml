@@ -1,18 +1,21 @@
 ///@argument start_tile_id
-///@argument directions
+///@argument dirs
 ///@argument range
+///@argument taper_val
+///@argument block_type - [0 - check free, 1 - check blocked]
 {
 var tile = argument0;
 var dirs = argument1;
 var rng  = argument2;
-var tpr = argument3;
+var tpr  = argument3;
+var blk  = argument4;
 
 var dcnt = array_length_1d(dirs);
 
 if(is_undefined(tile)){ return -1; }
 
 if(rng > 0){
-	var res    = ds_list_create();  //List of reachable tiles
+	var res = ds_list_create();  //List of reachable tiles
 	ds_list_add(res, tile);
 	tile.srch_vis = true;
 	tile.srch_rng = rng + (tpr != 1 ? 1 : 0);
@@ -30,15 +33,15 @@ if(rng > 0){
 	
 	while(rng > 0){
 		if(tpr != 1){
-			r_cnt = scr_board_search_tapered_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt],tpr);
+			r_cnt = scr_board_search_tapered_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt], tpr, blk);
 		}else {
-			r_cnt = scr_board_search_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt]);
+			r_cnt = scr_board_search_iteration(dirs, dcnt, [check, n_check, path, res, r_cnt], blk);
 		}
 		
 		#region Swap queues
 		var temp = n_check;
-		n_check   = check;
-		check       = temp;
+		n_check  = check;
+		check    = temp;
 		#endregion
 		
 		rng -= 1;

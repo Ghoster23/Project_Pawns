@@ -1,8 +1,8 @@
 //test spell
 var type         = spell_type.evocation;
 
-var p1_m1 = [target_mod.range,3];
-var p1 = [target_param.wall, 0, [p1_m1]];
+var p1_m1 = [target_mod.range,1];
+var p1 = [target_param.aoe, 0, [p1_m1]];
 
 var p2 = [];
 var p3 = [];

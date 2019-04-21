@@ -18,12 +18,18 @@ if(init_state == 1){
 }
 #endregion
 
-#region Free
+#region Free and Blocked checks
 var obj = global.dg_objs[# cl_x, cl_y];
 
 if(not is_undefined(obj) and instance_exists(obj)){
-	free = false;
+	if(object_is_ancestor(obj, obj_solid_parent)){
+		blocked = true;
+		free    = false;
+	}else {
+		free = false;
+	}
 }else {
-	free = true;
+	free    = true;
+	blocked = false;
 }
 #endregion
