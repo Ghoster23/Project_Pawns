@@ -5,13 +5,13 @@ draw_set_alpha(0.3);
 gpu_set_blendmode(bm_add)
 	
 var color = ds_map_find_first(highlights);
-	
+
 #region Iterate through colors
 while(!is_undefined(color)){
 	var list = ds_map_find_value(highlights, color);
 		
 	#region Get list
-	if(!is_undefined(list) ){
+	if(!is_undefined(list) and ds_exists(list, ds_type_list)){
 		var  i = 0;
 		var tl = list[| i];
 		
