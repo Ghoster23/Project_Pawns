@@ -1,11 +1,14 @@
 ///@argument statuses_array_opt
-///To mask a status, init the array with 2 in a given position
-///[ burning, wet, eletric, decay]
+///To mask a status pass it as an argument
 {
-stu_active = [0,0,0,0];
-stu_turns  = [0,0,0,0];
+stu_active = array_create(status.count, 0);
+stu_turns  = array_create(status.count, 0);
 
-if(argument_count > 0){
-	stu_active = argument[0];
+for(var i = 0; i < argument_count; i++){
+	var stt = argument[i];
+	
+	if(stt < status.count){
+		stu_active[stt] = -1;
+	}
 }
 }

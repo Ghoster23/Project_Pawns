@@ -18,10 +18,10 @@ ena_state = 0;
 ena_param = []; //Array containing the enact parameter
 #endregion
 
-#region Conclude
-cnc_state = 0;
+#region Element
+ele_state = 0;
 
-cnc_param = []; //Array containing the conclude parameter
+ele_param = []; //Array containing the element parameter
 #endregion
 
 concluded = false; //Flag for the end of the effects

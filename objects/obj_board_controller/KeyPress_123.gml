@@ -1,6 +1,1 @@
-with global.turn {
-	move = 1;
-	act  = 1;
-	
-	global.turn = noone;
-}
+scr_debug_message_ds_list(global.dl_pawns);

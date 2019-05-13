@@ -29,8 +29,8 @@ for(var i = 0; i < pr_count; i ++){
 			spell.ena_param = param[1];
 		break;
 		
-		case param_type.conclude:
-			spell.cnc_param = param[1];
+		case param_type.elemental:
+			spell.ele_param = param[1];
 		break;
 	}
 }

@@ -11,11 +11,11 @@ if(mov_hor != 0 or mov_ver != 0){
 		var xx = x div global.cell_size + mov_hor;
 		var yy = y div global.cell_size + mov_ver;
 		
-		var fr = scr_brd_tile_is_free( xx, yy);
-	
+		var fr = scr_brd_tile_unoccupied( xx, yy);
+		
 		if(fr){
 			if((mov_hor != 0 and mov_ver != 0 and 
-				(scr_brd_tile_is_free(xx-mov_hor,yy) or scr_brd_tile_is_free(xx,yy-mov_ver))) or 
+				(scr_brd_tile_unoccupied(xx-mov_hor,yy) or scr_brd_tile_unoccupied(xx,yy-mov_ver))) or 
 				(mov_hor != 0 xor mov_ver != 0)){
 				mov_nxt = global.dg_tile[# xx, yy];
 				mov_trg = mov_nxt;

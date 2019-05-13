@@ -14,22 +14,8 @@ if(init_state == 1){
 	if(lf) adj[6] = global.dg_tile[# cl_x-1, cl_y];
 	if(up and lf) adj[7] = global.dg_tile[# cl_x-1, cl_y-1];
 	
+	sprite_index = scr_autotile_floor();
+	
 	init_state = 2;
-}
-#endregion
-
-#region Free and Blocked checks
-var obj = global.dg_objs[# cl_x, cl_y];
-
-if(not is_undefined(obj) and instance_exists(obj)){
-	if(object_is_ancestor(obj, obj_solid_parent)){
-		blocked = true;
-		free    = false;
-	}else {
-		free = false;
-	}
-}else {
-	free    = true;
-	blocked = false;
 }
 #endregion

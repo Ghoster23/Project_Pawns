@@ -1,8 +1,28 @@
+enum property {
+	flammable,
+	hydrophobic,
+	heavy,
+	light,
+	floating,
+	count
+}
+
 enum status {
 	burn,
 	wet,
 	eletric,
-	decay
+	decay,
+	cripple,
+	count
+}
+
+enum tile_type {
+	none,
+	dirt,
+	grass,
+	stone,
+	metal,
+	water
 }
 
 enum action {
@@ -17,7 +37,7 @@ enum spell_type {
 enum param_type {
 	target,
 	enact,
-	conclude
+	elemental
 }
 
 enum target_param {
@@ -35,14 +55,26 @@ enum target_mod {
 }
 
 enum enact_param {
+	create,
+	destroy,
+	kinesis
+}
+
+enum elemental_param {
 	air,
 	dark,
 	earth,
 	fire,
 	light,
-	water	
+	water
 }
 
 enum conclude_param {
 	none
+}
+
+enum fluid {
+	water,
+	oil,
+	count
 }

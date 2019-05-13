@@ -1,5 +1,8 @@
-// Inherit the parent event
 event_inherited();
+
+element_type = 2;
+
+piece_type = 0; //0 - ??? | 1 - Pawn | 2 - Solid
 
 #region Register
 prv_x = x div global.cell_size;

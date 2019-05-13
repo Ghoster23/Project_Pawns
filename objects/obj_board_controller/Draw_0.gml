@@ -1,4 +1,4 @@
-draw_text(0,0,"Turn: " + string(turn_counter));
+draw_text(0,0,"Turn: " + string(global.turn_counter));
 
 if(global.turn != noone){
 	draw_text(0,32,"Pawn: " + string(global.turn) + " " + object_get_name(global.turn.object_index));

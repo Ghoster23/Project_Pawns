@@ -1,5 +1,5 @@
 switch global.brd_stt {
-	case 0: //Give it a turn for all pieces to be in place
+	case 0: //Give it a step for all pieces to be in place
 		if(global.pawn_cnt > 0){
 			global.brd_stt = 1;
 		}
@@ -8,50 +8,46 @@ switch global.brd_stt {
 	case 1:
 		#region Advance Turn				
 		#region Round Over
-		if(turn_counter == 0){
-			with(obj_pawn_parent){
-				if(mov_list == -1){
-					event_perform(ev_other,ev_user0);
-				}
-			}
+		if(global.turn_counter == global.pawn_cnt){ 
+			global.turn_counter   = 0; //Reset turn counter
+			global.round_counter += 1; //Increment number of rounds elapsed
 		}
 		#endregion
-				
-		var next = global.dl_pawns[| turn_counter];
 		
-		#region Out-pf-Bounds Exception
+		var next = global.dl_pawns[| global.turn_counter];
+		
+		#region Out-of-Bounds Exception
 		if(is_undefined(next)){
-			turn_counter     = 0;
-			global.pawn_cnt -= 1;
+			global.turn_counter  = 0;
+			global.pawn_cnt     -= 1;
 			exit;
 		}
 		#endregion
 		
 		#region Non-Existent instance Exception
 		if(not instance_exists(next)){
-			ds_list_delete(global.dl_pawns,turn_counter);
-			turn_counter    -= 1;
-			global.pawn_cnt -= 1;
+			ds_list_delete(global.dl_pawns,global.turn_counter);
+			global.turn_counter -= 1;
+			global.pawn_cnt     -= 1;
 			exit;
 		}
 		#endregion
 		
-		global.turn = next;
-				
+		global.turn = next; //Update who's turn it is
+		
+		//Refresh the pawns 'tokens'
 		with next {
 			act  = 2;
 			move = 2;
 		}
-				
-		turn_counter += 1;
-				
-		if(turn_counter == global.pawn_cnt){ turn_counter = 0; }
+		
+		global.turn_counter += 1; //Turn has started
 		
 		global.brd_stt = 2;
 		#endregion
 	break;
 	
-	case 2:
+	case 2://Wait for the turn to be concluded
 		if(global.turn == noone){
 			global.brd_stt = 1;
 		}

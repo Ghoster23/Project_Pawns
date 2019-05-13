@@ -1,3 +1,4 @@
+///@description Toggle PixelPerfect
 pixelperfect = !pixelperfect;
 
 if(global.fullscreen){

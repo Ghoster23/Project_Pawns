@@ -25,10 +25,10 @@ while(!is_undefined(c_tile) and instance_exists(c_tile)){
 			//If there is a tile in that direction
 			if(adj[dirs[i]] != noone){
 				var tl = adj[dirs[i]];
-				var bl = (block ? tl.free : tl.blocked);
+				var bl = (block ? tl.blocked : not tl.free);
 				
 				//If the tile is free and has not been visited
-				if(bl and not tl.srch_vis){
+				if(not bl and not tl.srch_vis){
 					tl.srch_vis = true;            //Mark it as visited
 					ds_queue_enqueue(n_check,tl);  //Add it to next iteration's queue
 			

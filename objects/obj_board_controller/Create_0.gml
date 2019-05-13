@@ -13,7 +13,7 @@ var cl = global.cell_size;
 
 for(var i = 0; i < h_cells; i++){
 	for(var j = 0; j < v_cells; j++){
-		var tile = instance_create_layer(i * cl, j * cl, "Tiles", obj_tile);
+		var tile = instance_create_layer(i * cl, j * cl, 3, obj_tile);
 		global.dg_tile[# i, j] = tile;
 		global.dg_objs[# i, j] = noone;
 	}
@@ -27,10 +27,11 @@ global.brd_stt = 0;
 #endregion
 
 #region Turn
-global.dl_pawns = ds_list_create(); //List of pawns (pieces that have actions)
-global.pawn_cnt = 0;                //Pawn count
-global.turn     = noone;            //Pawn who's has the turn
-turn_counter    = 0;
+global.dl_pawns      = ds_list_create(); //List of pawns (pieces that have actions)
+global.pawn_cnt      = 0;                //Pawn count
+global.turn          = noone;            //Pawn who's has the turn
+global.turn_counter  = 0;                //Turn counter (dah)
+global.round_counter = 0;                //Round counter
 
 slt_inst = noone;
 slt_type = -1;
@@ -40,4 +41,9 @@ mov_pawn = noone;
 mov_list = -1;
 
 act_pawn = noone;
+#endregion
+
+#region Tile Grids
+global.tl_map_fluids = layer_tilemap_get_id(1);
+global.tl_map_tiles  = layer_tilemap_get_id(2);
 #endregion

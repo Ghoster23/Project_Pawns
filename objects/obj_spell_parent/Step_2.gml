@@ -8,6 +8,6 @@ switch state {
 	case 1: //Enacting
 	break;
 	
-	case 2: //Conclusion
+	case 2: //Element
 	break;
 }

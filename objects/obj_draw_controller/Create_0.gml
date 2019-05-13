@@ -7,4 +7,3 @@ cam_wd = camera_get_view_width(camera);
 cam_hg = camera_get_view_height(camera);
 
 highlights = ds_map_create();
-colors = [c_red,c_green,c_blue];

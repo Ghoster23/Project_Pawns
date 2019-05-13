@@ -9,7 +9,7 @@ switch state {
 		event_user(1);
 	break;
 	
-	case 2: //Conclusion
+	case 2: //Element
 		event_user(2);
 	break;
 }

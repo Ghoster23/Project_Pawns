@@ -1,8 +1,8 @@
 {
-    "id": "32bf7f64-b15c-4aa0-9a35-168f57e3c262",
+    "id": "92c1206c-5caa-4a04-86f5-dcff4fe51cbd",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scr_brd_tile_is_free",
+    "name": "scr_properties_init",
     "IsCompatibility": false,
     "IsDnD": false
 }

@@ -1,5 +1,5 @@
 #region Moving
-if(mov_trg != noone){
+if(mov_trg != noone and move == 2){
 	switch mov_stt {
 		case 0: //Determine next step
 			mov_nxt = ds_stack_pop(mov_path);
@@ -42,6 +42,8 @@ if(mov_trg != noone){
 				ds_list_destroy(mov_list);
 				mov_list = -1;
 				#endregion
+				
+				move = 1;
 			}else {
 				mov_stt = 0;
 			}

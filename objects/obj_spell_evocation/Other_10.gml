@@ -8,27 +8,27 @@ switch trg_state {
 			break;
 		
 			case target_param.line:
-				info = scr_search_flood(caster.tile, true, 1, 1, 1);
+				info = scr_search_flood(caster.tile, true, 1, 1, 0);
 				trg_lst_trgable = info[0];
 				ds_list_delete(trg_lst_trgable,0);
 				ds_map_destroy(info[1]);
 			break;
 			
 			case target_param.aoe:
-				info = scr_search_flood(caster.tile, true, 3, 1.5, 1);
+				info = scr_search_flood(caster.tile, true, 2, 1.5, 0);
 				trg_lst_trgable = info[0];
 				ds_map_destroy(info[1]);
 			break;
 			
 			case target_param.wall:
-				info = scr_search_flood(caster.tile, true, 3, 1.5, 1);
+				info = scr_search_flood(caster.tile, true, 2, 1.5, 0);
 				trg_lst_trgable = info[0];
 				ds_list_delete(trg_lst_trgable,0);
 				ds_map_destroy(info[1]);
 			break;
 		
 			case target_param.touch:
-				info = scr_search_flood(caster.tile, true, 1, 1, 1);
+				info = scr_search_flood(caster.tile, true, 1, 1, 0);
 				trg_lst_trgable = info[0];
 				ds_map_destroy(info[1]);
 			break;

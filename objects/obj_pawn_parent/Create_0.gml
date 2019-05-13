@@ -1,5 +1,7 @@
 event_inherited();
 
+piece_type = 1;
+
 z = 0;
 offset = true;
 

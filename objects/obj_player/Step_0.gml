@@ -1,5 +1,5 @@
 #region Moving
-if(mov_trg != noone){
+if(mov_trg != noone and move == 2){
 	switch mov_stt {
 		case 0: //Determine next step
 			mov_stt = 1;
@@ -37,6 +37,7 @@ if(mov_trg != noone){
 				mov_nxt = noone;
 				
 				mov_listen = 3;
+				move       = 1;
 			}else {
 				mov_stt = 0;
 			}

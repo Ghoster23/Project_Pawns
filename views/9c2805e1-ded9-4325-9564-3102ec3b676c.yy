@@ -4,8 +4,9 @@
     "mvc": "1.1",
     "name": "9c2805e1-ded9-4325-9564-3102ec3b676c",
     "children": [
-        "32bf7f64-b15c-4aa0-9a35-168f57e3c262",
-        "9724abb5-2d2c-448e-923b-1ee41a7895c7"
+        "9724abb5-2d2c-448e-923b-1ee41a7895c7",
+        "eba192fd-8ac3-4380-aefb-b844a9c7d09e",
+        "743d2b42-c839-4d1e-9446-8b8e1151465e"
     ],
     "filterType": "GMScript",
     "folderName": "Board",

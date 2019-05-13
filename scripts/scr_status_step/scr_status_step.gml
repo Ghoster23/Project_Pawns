@@ -1,8 +1,9 @@
+///@argument status
 switch argument0 {
 	default:
 	break;
 	
-	case 0: //Burn
-		hp -= 1;
+	case status.burn:
+		//burn
 	break;
 }
