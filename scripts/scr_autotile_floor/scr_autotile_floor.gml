@@ -1,42 +1,42 @@
 {
 var i_index = 0;
 	
-var u  = adj[0]; // up
+var u   = adj[0]; // up
 var ur = adj[1]; // up-right
-var r  = adj[2]; // right
+var r   = adj[2]; // right
 var dr = adj[3]; // down-right
 var d  = adj[4]; // down
 var dl = adj[5]; // down-left
-var l  = adj[6]; // left
+var l   = adj[6]; // left
 var ul = adj[7]; // up-left
     
 // Check adjacent side existence
 	
 //up
-if (u != noone and u.object_index == object_index) u = 1;
+if (u != noone and u.type == type) u = 1;
 	
 //right
-if (r != noone and r.object_index == object_index) r = 2;
+if (r != noone and r.type == type) r = 2;
 	
 //down
-if (d != noone and d.object_index == object_index) d = 4;
+if (d != noone and d.type == type) d = 4;
 	
 //left
-if (l != noone and l.object_index == object_index) l = 8;
+if (l != noone and l.type == type) l = 8;
 	
 // Check corner existence
 	
 //up left
-if (ul != noone and ul.object_index == object_index) ul = 1;
+if (ul != noone and ul.type == type) ul = 1;
 	
 //up right
-if (ur != noone and ur.object_index == object_index) ur = 2;
+if (ur != noone and ur.type == type) ur = 2;
 	
 //down right
-if (dr != noone and dr.object_index == object_index) dr = 4;
+if (dr != noone and dr.type == type) dr = 4;
 	
 //down left
-if (dl != noone and dl.object_index == object_index) dl = 8;
+if (dl != noone and dl.type == type) dl = 8;
     
 var edges   = u + r + d + l;
 var corners = 0;

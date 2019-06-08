@@ -14,7 +14,11 @@ if(init_state == 1){
 	if(lf) adj[6] = global.dg_tile[# cl_x-1, cl_y];
 	if(up and lf) adj[7] = global.dg_tile[# cl_x-1, cl_y-1];
 	
-	sprite_index = scr_autotile_floor();
+	tl_spr_id = scr_autotile_floor();
+	
+	tl_map_data = tile_set_index(tl_map_data, type * 47 + tl_spr_id);
+	
+	tilemap_set_at_pixel(global.tl_map_tiles, tl_map_data, x, y);
 	
 	init_state = 2;
 }

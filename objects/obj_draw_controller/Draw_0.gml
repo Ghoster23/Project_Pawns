@@ -1,9 +1,11 @@
 #region Board
 if(ds_exists(ds_depthgrid, ds_type_grid)){
 	#region Initialization
+	var to_draw_obj = obj_piece_parent;
+	
 	//Assign grid and find instance count
 	var depthgrid = ds_depthgrid;
-	var instNum   = instance_number(obj_board_element);
+	var instNum   = instance_number(to_draw_obj);
 	
 	//If there are any
 	if(instNum != 0){
@@ -16,7 +18,7 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 	/// instances
 	var yy = 0;
 	
-	with(obj_board_element){
+	with(to_draw_obj){
 		if(visible){		
 			depthgrid[# 0, yy] = id;
 			
@@ -42,6 +44,7 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 		
 		#region Instances
 		with(instanceID){
+			show_debug_message(object_get_name(instanceID.object_index));
 			//execute custom drawing if object has any
 			if(draw_script != -1){
 				script_execute(draw_script);
