@@ -1,44 +1,51 @@
 if(closed){
 	scr_window_close();
+	exit;
 }
 
-switch state {
-	case 0:
-		#region Send to front of all windows
-		if(scr_clicked_in(x - (width / 2) * cm, y - (height / 2) * cm,
-						  x + (width / 2) * cm, y + (height / 2) * cm)){
-			with(drawer){
-				if(ds_exists(draw_wnds,ds_type_list)){
-					if(draw_wnds[| ds_list_size(draw_wnds) - 1] != other.id){
-						ds_list_delete(draw_wnds, ds_list_find_index(draw_wnds,other.id));
-						ds_list_add(draw_wnds, other.id);
-						other.in_front = true;
-					}
-				}
-			}
-		}
-		#endregion
-	
+#region Update vars
+cm = 1;
+
+sc_wd = width  * cm;
+sc_hg = height * cm;
+
+x1 = x;
+y1 = y;
+
+x2 = x + sc_wd;
+y2 = y + sc_hg;
+
+sc_margin = margin * cm;
+
+rg = x2 - sc_margin;
+tp = y1 + sc_margin + bar_hg * cm;
+lf = x1 + sc_margin;
+bt = y2 - sc_margin;
+#endregion
+
+switch mov_state {
+	case 0:	
 		#region Drag Start
 		if(moveable and
-			scr_mouse_hold(x - (width / 2) * cm, y - (height / 2) * cm,
-						   x + (width / 2) * cm, y - (height / 2 - bar_hg) * cm) and
+			scr_mouse_hold(x1, y1, x2, y1 + bar_hg * cm) and
 							obj_window_controller.grabbed == noone){
-			dist_x = x - obj_phy_cursor.gui_x;
-			dist_y = y - obj_phy_cursor.gui_y;
+			dist_x = x - obj_cursor.gui_x;
+			dist_y = y - obj_cursor.gui_y;
+			
 			obj_window_controller.grabbed = id;
-			state = 1;
+			
+			mov_state = 1;
 		}
 		#endregion
 	break;
 	
 	case 1:
 		#region Drag On-Going
-		x = obj_phy_cursor.gui_x + dist_x;
-		y = obj_phy_cursor.gui_y + dist_y;
+		x = obj_cursor.gui_x + dist_x;
+		y = obj_cursor.gui_y + dist_y;
 		
 		if(!mouse_check_button(mb_left)){
-			state = 0;
+			mov_state = 0;
 			obj_window_controller.grabbed = noone;
 		}
 		#endregion

@@ -6,8 +6,15 @@ global.cell_size = 64;
 h_cells = room_width  div 64;
 v_cells = room_height div 64;
 
+sl_tl = [-1, -1];
+
 global.dg_tile = ds_grid_create(h_cells,v_cells);
 global.dg_objs = ds_grid_create(h_cells,v_cells);
+
+#region Tile Maps
+global.tl_map_fluids = layer_tilemap_get_id(1);
+global.tl_map_tiles  = layer_tilemap_get_id(2);
+#endregion
 
 var cl = global.cell_size;
 
@@ -41,9 +48,4 @@ mov_pawn = noone;
 mov_list = -1;
 
 act_pawn = noone;
-#endregion
-
-#region Tile Grids
-global.tl_map_fluids = layer_tilemap_get_id(1);
-global.tl_map_tiles  = layer_tilemap_get_id(2);
 #endregion

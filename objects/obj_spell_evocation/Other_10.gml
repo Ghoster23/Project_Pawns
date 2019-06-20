@@ -42,7 +42,7 @@ switch trg_state {
 	
 	case 1: //Wait for selection and calculate affected tiles
 		#region Select and check tile
-		if(global.key_active[key_id.move]) {
+		if(global.key_active[key_id.l_click]) {
 			if(ds_list_find_index( trg_lst_trgable, sl_tl) != -1){
 				#region Determine affected tiles
 				switch trg_param[0] {
@@ -73,14 +73,14 @@ switch trg_state {
 	break;
 	
 	case 2: //Wait for confirmation
-		if(global.key_active[key_id.move] and alarm[1] == -1){
+		if(global.key_active[key_id.l_click] and alarm[1] == -1){
 			#region Advance to enactment
 			ds_list_destroy(trg_lst_trgable);
 			trg_lst_trgable = -1;
 			ds_map_delete(obj_draw_controller.highlights, c_red);
 			trg_state = 3;
 			#endregion
-		}else if(global.key_active[key_id.act]){
+		}else if(global.key_active[key_id.r_click]){
 			#region Go back to tile selection
 			ds_map_delete(obj_draw_controller.highlights, c_red);
 			ds_list_destroy(targets);

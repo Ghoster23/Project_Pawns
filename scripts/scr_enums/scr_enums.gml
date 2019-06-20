@@ -1,3 +1,41 @@
+enum board_element {
+	none,
+	tile,
+	piece,
+	count
+}
+
+enum tile_type {
+	none,
+	dirt,
+	grass,
+	stone,
+	metal,
+	water,
+	count
+}
+
+enum piece_type {
+	none,
+	pawn,
+	block,
+	count
+}
+
+enum pawn_type {
+	player,
+	npc,
+	count
+}
+
+enum block_type {
+	none,
+	stone,
+	wood,
+	metal,
+	count
+}
+
 enum property {
 	flammable,
 	hydrophobic,
@@ -14,15 +52,6 @@ enum status {
 	decay,
 	cripple,
 	count
-}
-
-enum tile_type {
-	none,
-	dirt,
-	grass,
-	stone,
-	metal,
-	water
 }
 
 enum action {

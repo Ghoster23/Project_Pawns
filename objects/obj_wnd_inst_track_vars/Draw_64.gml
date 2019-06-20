@@ -1,13 +1,8 @@
 // Inherit the parent event
 event_inherited();
 
-var hg = height * cm;
-var wd = width  * cm;
-
-var rg = x + wd/2 - 12 * cm;
-var tp = y - hg/2 + (bar_hg + 12) * cm;
-var lf = x - wd/2 + 12 * cm;
-var bt = y + hg/2 - 12 * cm;
+var hg = sc_hg;
+var wd = sc_wd;
 
 var iwd = rg - lf;
 var ihg = bt - tp;

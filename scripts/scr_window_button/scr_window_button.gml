@@ -12,121 +12,112 @@
 {
 if(argument_count < 5){ return; }
 
-var x1 = argument[0];
-var y1 = argument[1];
-var x2 = argument[2];
-var y2 = argument[3];
+var _x1 = argument[0];
+var _y1 = argument[1];
+var _x2 = argument[2];
+var _y2 = argument[3];
 
-var label = argument[4];
+var _label = argument[4];
 
-var type = bt_type;
+var _type = bt_type;
 if(argument_count > 5){
-	type = argument[5];
+	_type = argument[5];
 }
 
-var tparam = bt_tparam;
+var _tparam = bt_tparam;
 if(argument_count > 6){
-	tparam = argument[6];
+	_tparam = argument[6];
 }
 
-var hover = bt_hover;
+var _hover = bt_hover;
 if(argument_count > 7){
-	hover = argument[7];
+	_hover = argument[7];
 }
 
-var hparam = bt_hparam;
+var _hparam = bt_hparam;
 if(argument_count > 8){
-	hparam = argument[8];
+	_hparam = argument[8];
 }
 
-var xs = 1;
+var _xs = 1;
 if(argument_count > 9){
-	xs = argument[9];
+	_xs = argument[9];
 }
 
-var ys = 1;
+var _ys = 1;
 if(argument_count > 10){
-	ys = argument[10];
+	_ys = argument[10];
 }
 
-var res = 0;
-var hov = false;
+var _res = 0;
+var _hov = false;
 
-if(in_front and point_in_rectangle(obj_phy_cursor.gui_x,obj_phy_cursor.gui_y,x1,y1,x2,y2)){	
-	if(mouse_check_button_pressed(mb_left) and alarm[0] == -1){
-		res = 1;
+var _wd = _x2 - _x1;
+var _hg = _y2 - _y1;
+
+if(point_in_rectangle(obj_cursor.gui_x, obj_cursor.gui_y, _x1, _y1, _x2, _y2)){	
+	if(in_front and mouse_check_button_pressed(mb_left) and alarm[0] == -1){
+		_res = 1;
 		alarm[0] = 5;
 	}
-	hov = true;
+	_hov = true;
 }
 
-#region Hover Begin
-if(hov){
-	switch hover {
+#region _hover Begin
+if(_hov){
+	switch _hover {
 		case 0: //Basic
-			draw_set_alpha(hparam);
+			draw_set_alpha(_hparam);
 		break;
 		
 		case 1: //Outline
-			switch type {
-				case 0:
-				break;
-				
-				case 1:
-					outline_start(3, hparam, tparam);
-				break;
-				
-				case 2:
-					outline_start(3, hparam, tparam);
-				break;
-			}
+			draw_set_color(_hparam);
+			draw_rectangle(_x1, _y1, _x2, _y2, false);
+			draw_set_color(c_white);
 		break;
 		
 		case 2:
-			gpu_set_blendenable(false)
-			gpu_set_colorwriteenable(false,false,false,true);
 		break;
 	}
 }
 #endregion
 
-switch type {
+switch _type {
 	case 0: //Basic
-		if(hover != 1 || not hov){
-			draw_set_color(tparam);
-			draw_rectangle(x1, y1, x2, y2, false);
+		if(_hover != 1 || not _hov){
+			draw_set_color(_tparam);
+			draw_rectangle(_x1, _y1, _x2, _y2, false);
 			draw_set_color(c_white);
 		}else {
-			draw_set_color(tparam);
-			draw_rectangle(x1, y1, x2, y2, false);
-			draw_set_color(hparam);
-			draw_rectangle(x1, y1, x2, y2, true);
+			draw_set_color(_tparam);
+			draw_rectangle(_x1, _y1, _x2, _y2, false);
+			draw_set_color(_hparam);
+			draw_rectangle(_x1, _y1, _x2, _y2, true);
 			draw_set_color(c_white);
 		}
 	break;
 	
 	case 1: //Sprite
-		draw_sprite_stretched(tparam, -1, 
-							  x1 + (x2-x1)/2 - sprite_xoffset + sprite_width  / 2, 
-							  y1 + (y2-y1)/2 - sprite_yoffset + sprite_height / 2, 
-							  x2 - x1, 
-							  y2 - y1);
+		draw_sprite_stretched(_tparam, -1, 
+							  _x1 + _wd / 2 - sprite_xoffset + sprite_width  / 2, 
+							  _y1 + _hg / 2 - sprite_yoffset + sprite_height / 2, 
+							  _wd, 
+							  _hg);
 	break;
 	
 	case 2: //9SB
-		scr_9SB_ext(tparam, x1, y1, x2, y2, xs, ys);
+		scr_9SB_ext(_tparam, _x1, _y1, _x2, _y2, _xs, _ys);
 	break;
 }
 
-#region Hover End
-if(hov){
-	switch hover {
+#region _hover End
+if(_hov){
+	switch _hover {
 		case 0: //Basic
 			draw_set_alpha(1);
 		break;
 		
 		case 1: //Outline
-			shader_reset();
 		break;
 		
 		case 2: //Draw over
@@ -139,10 +130,12 @@ if(hov){
 draw_set_color(c_black);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_text(x1 + (x2-x1)/2, y1 + (y2-y1)/2 - 2, label);
+
+draw_text(_x1 + _wd / 2, _y1 + _hg / 2 - 2, _label);
+
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 
-return res;
+return _res;
 }

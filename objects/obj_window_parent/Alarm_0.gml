@@ -1,0 +1,1 @@
+///@description Mouse click cooldown

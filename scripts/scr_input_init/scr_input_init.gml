@@ -5,9 +5,8 @@ enum key_id {
 	left,
 	up,
 	
-	/* - Skills - */
-	move,
-	act,
+	l_click,
+	r_click,
 	
 	/* - Short cuts Keys - */
 	menu,
@@ -34,8 +33,8 @@ global.key_binds[key_id.up]    = ord("W");
 global.key_binds[key_id.down]  = ord("S");
 global.key_binds[key_id.left]  = ord("D");
 
-global.key_binds[key_id.move] = mb_left;
-global.key_binds[key_id.act]  = mb_right;
+global.key_binds[key_id.l_click] = mb_left;
+global.key_binds[key_id.r_click]  = mb_right;
 
 //Menu Keys
 global.key_binds[key_id.m_confirm] = vk_enter;

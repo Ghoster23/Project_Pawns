@@ -10,10 +10,12 @@ surface_hg = 0;
 
 test_i = 0;
 test_width  = [1080, 1280, 1280, 1366, 1440, 1600, 1920, display_get_width()];
-test_heigth = [  720,   800,  1024,  768,    900,   900, 1080, display_get_height()];
+test_heigth = [ 720,  800, 1024,  768,  900,  900, 1080, display_get_height()];
 
 global.fullscreen = window_get_fullscreen();
 pixelperfect = true;
+
+global.gui_ratio = 1;
 
 #region Init
 //Monitor

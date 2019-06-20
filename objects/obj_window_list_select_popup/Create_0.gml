@@ -3,11 +3,23 @@ event_inherited();
 
 title = "";
 
-moveable = false;
+width  = 0;
+height = 0;
 
+moveable  = false;
 closeable = false;
 
-options  = 0;
-op_count = 0;
-selected = 0;
-clicked  = 0;
+collapsed = true;
+
+full_height = height;
+
+btn_hg = 24;
+
+options  = 0; // Array of options
+op_count = 0; // Number of options
+selected = 0; // Selected option
+
+rel_x = 0;
+rel_y = 0;
+
+booted = false;

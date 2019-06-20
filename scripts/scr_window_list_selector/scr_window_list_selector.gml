@@ -3,96 +3,88 @@
 ///@argument y1
 ///@argument list
 ///@argument select_id
+///@argument width
 ///@argument xscale_optional
 ///@argument yscale_optional
 {
-var val = argument[0];
+var _val = argument[0];
 
-var x1 = argument[1];
-var y1 = argument[2];
+var _x1 = argument[1];
+var _y1 = argument[2];
 
-var arr = argument[3];
+var _arr = argument[3];
 
-if(is_array(arr)){
-	var len = array_length_1d(arr);
+var _len = 0;
+
+if(is_array(_arr)){
+	_len = array_length_1d(_arr);
 }else {
 	return 0;
 }
 
-var wd = 0;
-var hg = 0;
+var _si = argument[4];
 
-for(var i = 0; i < len; i++){
-	var op = arr[i];
-	var sop = string(op);
-	
-	wd = max(string_width(sop),wd);
-	hg = max(string_height(sop),hg);
-	
-	arr[i] = sop;
-}
+var _wd = 0;
+if(argument_count > 5){ _wd = argument[5]; }
 
-wd += 12;
+var _xs = 1;
+if(argument_count > 6){ _xs = argument[6]; }
 
-var si = argument[4];
+var _ys = 1;
+if(argument_count > 7){ _ys = argument[7]; }
 
-var xs = 1;
-if(argument_count > 5){ xs = argument[5]; }
+_val = clamp(_val, 0, _len - 1);
 
-var ys = 1;
-if(argument_count > 6){ ys = argument[6]; }
-
-val = clamp(val,0,len-1);
-
-var opt = arr[val];
-
-//Draw main rectangle
-draw_set_color(c_white);
-draw_rectangle(x1, y1, x1 + wd, y1 + hg, true);
-
-//Draw selected option text
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-		
-draw_text_transformed( x1 + 6, y1, opt, xs, ys, 0);
+var _opt = _arr[_val];
 
 //States
-switch select_state[si] {
+switch select_popup[_si] {
 	case noone:
-		if(scr_clicked_in(x1,y1,x1+wd,y1+hg)){
-			select_state[si] = scr_window_create(obj_window_list_select_popup);
-			
-			if(select_state[si] != noone){
-				with select_state[si] {
-					title    = opt;
-					width    = wd;
-					height   = hg * (len + 1);
-					bt_hg    = hg;
-					x = x1 + width/2;;
-					y = y1 + height/2;
-					options  = arr;
-					selected = val;
-					op_count = len;
-					alarm[0] = 5;
-				}
+		select_popup[_si] = scr_window_popup_create(obj_window_list_select_popup, _x1, _y1);
+		
+		if(select_popup[_si] != noone){
+			with select_popup[_si] {
+				title    = _opt;
+				
+				options  = _arr;
+				selected = _val;
+				op_count = _len;
+				
+				width = _wd;
+				
+				rel_x = x - other.x;
+				rel_y = y - other.y;
+				
+				alarm[0] = 5;
 			}
 		}
 	break;
 	
 	default:
-		var popup = select_state[si];
-		if(instance_exists(popup)){			
-			if(popup.clicked){
-				val = popup.selected;
+		var _popup = select_popup[_si];
+		
+		if(instance_exists(_popup)) {
+			with _popup {
+				x = other.x + rel_x;
+				y = other.y + rel_y;
 				
-				popup.closed = true;
-				select_state[si] = noone;
+				in_front = other.in_front;
+				
+				if(options != _arr) {
+					options  = _arr;
+					op_count = _len;
+					
+					selected = 0;
+				}
+			
+				_val = selected;
 			}
+			
 		}else {
-			select_state[si] = noone;
+			select_popup[_si] = noone;
 		}
 	break;
 }
 
-return val;
+return _val;
 }

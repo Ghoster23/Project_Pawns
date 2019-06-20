@@ -9,13 +9,13 @@ application_surface_draw_enable(false);
 var pp = argument0;
 
 var working_wd = argument1;
-var working_hg  = argument2;
+var working_hg = argument2;
 
 var ag = argument3;
 
 var working_asr = working_wd/working_hg;
 
-switch room {	
+switch room {
 	default:
 		if(global.cam_asr <= working_asr){
 			if(pp){
@@ -56,7 +56,7 @@ global.Yoffset = (working_hg - surface_hg) / 2;
 
 #region GUI
 if(ag){
-	display_set_gui_size(surface_wd, surface_hg);
+	display_set_gui_maximize(global.cam_cvr, global.cam_cvr, global.Xoffset, global.Yoffset);
 
 	global.gui_WD = display_get_gui_width();
 	global.gui_HG = display_get_gui_height();

@@ -11,7 +11,7 @@ if(instance_exists(obj_console) and obj_console.selected){
 		var bind = global.key_binds[i];
 	
 		if(bind == mb_left || bind == mb_right || bind == mb_middle){
-			if(i < key_id.act){
+			if(i < key_id.r_click){
 				global.key_active[i] = mouse_check_button(bind);
 			}
 			else {
@@ -19,7 +19,7 @@ if(instance_exists(obj_console) and obj_console.selected){
 			}
 		}
 		else {
-			if(i < key_id.act){
+			if(i < key_id.r_click){
 				global.key_active[i] = keyboard_check(bind);
 			}
 			else {

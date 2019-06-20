@@ -1,8 +1,8 @@
 event_inherited();
 
-element_type = 2;
+element_type = board_element.piece;
 
-piece_type = 0; //0 - ??? | 1 - Pawn | 2 - Solid
+type = piece_type.none;
 
 #region Register
 prv_x = x div global.cell_size;

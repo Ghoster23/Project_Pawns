@@ -4,13 +4,10 @@
     "mvc": "1.1",
     "name": "87608894-4f6a-4a2d-816a-bef2f126a41e",
     "children": [
-        "90315384-9a77-4b5b-8a63-a905244f18d2",
-        "cb0870d4-1695-4719-8bf4-388502efbe37",
-        "d263bcd5-c06f-4f61-927d-aa6b811e9079",
-        "cb3503d6-a6a9-4390-bf1d-f8119d5b8d85",
-        "9c197b14-efcd-47db-b2e4-6d28dc1c131e",
-        "8ca27dd8-7a66-4040-b765-092bc4f9a4ae",
-        "7d5af46f-457a-4ae2-b9ee-2209cf844a4c"
+        "249f0e19-77bf-4d81-a7cb-e3789799f7e2",
+        "79523a42-ac8b-4fc0-855e-baa6b0834828",
+        "72591bf2-9709-4791-b1c5-a8daa080dc97",
+        "773f7372-95ba-4584-9309-8eafbdd3f9c6"
     ],
     "filterType": "GMObject",
     "folderName": "Controllers",

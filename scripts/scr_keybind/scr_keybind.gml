@@ -23,11 +23,11 @@ switch state{
 		break;
 		
 	case "attack_key":
-		global.key_binds[key_id.move]=newkey;
+		global.key_binds[key_id.l_click]=newkey;
 		break;
 		
 	case "mouse_r":
-		global.key_binds[key_id.act]=newkey;
+		global.key_binds[key_id.r_click]=newkey;
 		break;
 		
 	case "enter_key":

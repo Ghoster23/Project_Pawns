@@ -1,5 +1,7 @@
 event_inherited();
 
+sub_type = pawn_type.npc;
+
 #region States
 selected = false;
 

@@ -9,7 +9,7 @@ var x2 = argument2;
 var y2 = argument3;
 
 if(mouse_check_button_pressed(mb_left)){
-	if(point_in_rectangle(obj_phy_cursor.gui_x,obj_phy_cursor.gui_y,x1,y1,x2,y2)){
+	if(point_in_rectangle(obj_cursor.gui_x,obj_cursor.gui_y,x1,y1,x2,y2)){
 		return 1;
 	}
 }

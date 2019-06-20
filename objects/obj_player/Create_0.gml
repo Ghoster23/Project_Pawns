@@ -1,5 +1,7 @@
 event_inherited();
 
+sub_type = pawn_type.player;
+
 image_blend = c_fuchsia;
 
 offset = true;
