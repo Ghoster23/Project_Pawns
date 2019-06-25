@@ -98,10 +98,6 @@ enum elemental_param {
 	water
 }
 
-enum conclude_param {
-	none
-}
-
 enum fluid {
 	water,
 	oil,
