@@ -5,7 +5,8 @@ var cl_y1  = y1    + 10 * cm;
 var cl_x2  = cl_x1 + 16 * cm;
 var cl_y2  = cl_y1 + 16 * cm;
 
-var space = (bt - tp - btn_hg * op_count) / (op_count - 1);
+var btn_sc_hg = btn_hg * cm;
+var space = (bt - tp - btn_sc_hg * op_count) / (op_count - 1);
 
 if(not collapsed) {
 	if(scr_clicked_out(x1, y1, x2, y2)) {
@@ -16,14 +17,14 @@ if(not collapsed) {
 	var btn_y = tp;
 	
 	for(var i = 0; i < op_count; i++){
-		if(scr_window_button(lf, btn_y, rg, btn_y + btn_hg, options[i])){
+		if(scr_window_button(lf, btn_y, rg, btn_y + btn_sc_hg, options[i])){
 			if(i != selected){
 				collapsed = true;
 				selected = i;
 			}
 		}
 		
-		btn_y += btn_hg + space;
+		btn_y += btn_sc_hg + space;
 	}
 }
 

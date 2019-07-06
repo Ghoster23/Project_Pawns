@@ -61,6 +61,8 @@ bt_tparam = c_blue; // Button style parameter
 bt_hover  = 0;      // Hover over button style
 bt_hparam = 0.5;    // Hover parameter
 
+font = -1;
+
 cm = 1; // Scaling factor
 #endregion
 

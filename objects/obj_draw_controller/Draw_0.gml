@@ -44,7 +44,6 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 		
 		#region Instances
 		with(instanceID){
-			show_debug_message(object_get_name(instanceID.object_index));
 			//execute custom drawing if object has any
 			if(draw_script != -1){
 				script_execute(draw_script);
@@ -102,7 +101,7 @@ gpu_set_blendmode(bm_normal);
 draw_set_alpha(1);
 draw_set_color(c_white);
 
-var sl_p = obj_cursor.sl_tl;
+var sl_p = obj_board_controller.sl_tl;
 
 draw_rectangle(sl_p[0]*cl-1,sl_p[1]*cl-1,(sl_p[0]+1)*cl+1,(sl_p[1]+1)*cl+1,true);
 #endregion

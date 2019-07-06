@@ -1,1 +1,0 @@
-scr_debug_message_ds_list(global.dl_pawns);

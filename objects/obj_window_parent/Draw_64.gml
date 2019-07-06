@@ -33,6 +33,7 @@ if(closeable){
 
 	if(scr_window_button(cl_x1, cl_y1, cl_x2, cl_y2, "x")){
 		scr_window_close();
+		closed = true;
 	}
 }
 #endregion

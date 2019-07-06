@@ -11,4 +11,4 @@ tr_cnt  = 0;
 tr_vals = ds_list_create();
 
 title = "Instance Variables Tracker - " + string(id);
-width = max(width,string_width(title)+60);
+width = max(width, scr_string_width_in_font(title, font) + 60);

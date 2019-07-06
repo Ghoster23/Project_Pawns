@@ -1,5 +1,5 @@
-sl_tl[0] = clamp(mouse_x div global.cell_size, 0, room_width  div global.cell_size - 1);
-sl_tl[1] = clamp(mouse_y div global.cell_size, 0, room_height div global.cell_size - 1);
+sl_tl[0] = clamp(obj_cursor.rm_x div global.cell_size, 0, room_width  div global.cell_size - 1);
+sl_tl[1] = clamp(obj_cursor.rm_y div global.cell_size, 0, room_height div global.cell_size - 1);
 		
 tile_id  = global.dg_tile[# sl_tl[0],sl_tl[1]];
 

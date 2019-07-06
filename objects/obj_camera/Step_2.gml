@@ -1,21 +1,21 @@
-switch m_state {
-	case 0: //Stopped
-	case 1: //Move
-		//Zoom
-		if(abs(zoom - t_zoom) > 0.01){
-			zoom   = scr_approach(zoom,t_zoom,m_spd);
-			cam_wd = cam_wd_o / zoom;
-			cam_hg = cam_hg_o / zoom;
-		}else {
-			zoom   = t_zoom;
-			cam_wd = cam_wd_o / zoom;
-			cam_hg = cam_hg_o / zoom;
-		}		
-	break;
+#region Zoom Calculation
+var diff = abs(zoom - target_zoom);
+
+//If current zoom and target zoom differ more than tolerance
+if(diff > zoom_tolr){
+	//Make current zoom approach target
+	zoom = scr_approach(zoom, target_zoom, diff * zoom_rate);
+}else {
+	//Set zoom to target
+	zoom = target_zoom;
 }
 
-global.shake *= 0.5;
+//Calculate zoomed camera dimensions
+width  = orig_wd / zoom;
+height = orig_hg / zoom;
+#endregion
 
-camera_set_view_pos(   view_camera[0], x - cam_wd / 2, y - cam_hg / 2);
-camera_set_view_size(  view_camera[0],         cam_wd,         cam_hg);
-camera_set_view_border(view_camera[0],     cam_wd / 2,     cam_hg / 2);
+screen_shake *= 0.5; //Screen Shake Decay
+
+camera_set_view_pos(   view_camera[0], x - width / 2, y - height / 2);
+camera_set_view_size(  view_camera[0],         width,          height);

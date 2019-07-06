@@ -3,13 +3,14 @@ if(scr_unique_inst()) {exit;}
 image_xscale = 3;
 image_yscale = 3;
 
-//Get camera
-camera = room_get_camera(room,0);
-cam_wd = camera_get_view_width(camera);
-cam_hg = camera_get_view_height(camera);
+width  = view_wport[0];
+height = view_hport[0];
 
-//Movement
-m_spd = 0.25;
+orig_wd = width;
+orig_hg = height;
+
+#region Movement
+movement_rate = 0.25;
 
 target = instance_nearest(0,0,obj_player);
 
@@ -21,31 +22,31 @@ if(target != noone and instance_exists(target)){
 	y = room_height / 2;
 	target = noone;
 }
+#endregion
 
 //Position
-cam_x_c = x;
-cam_y_c = y;
-cam_x_s = x;
-cam_y_s = y;
-cam_x_t = x;
-cam_y_t = y;
+shake_x = x;
+shake_y = y;
 
-//Zoom
-cam_wd_o = cam_wd;
-cam_hg_o = cam_hg;
+target_x = x;
+target_y = y;
+
+#region Zoom
+can_zoom = false;
 
 zoom = 1;
-rate = 0.3;
-tolr = 1;
 
-t_zoom = 1;
+zoom_rate = 0.3;
+zoom_tolr = 0.01;
 
-cam_wd_z = cam_wd div zoom;
-cam_hg_z = cam_hg div zoom;
+target_zoom = 1;
+
+min_zoom = 0.25;
+max_zoom = 4;
+#endregion
 
 //Shake
-global.shake = 0;
+screen_shake = 0;
 
 //States
-m_state = 0;
-z_state = 0;
+move_state = 0;

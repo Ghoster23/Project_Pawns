@@ -12,6 +12,8 @@ if(not is_descended(wnd.object_index, obj_window_parent)) {
 with(wnd){
 	#region Draw window
 	drawing = true;
+	
+	cm = 1;
 		
 	event_perform( ev_draw, ev_gui_begin);
 	event_perform( ev_draw, ev_gui);

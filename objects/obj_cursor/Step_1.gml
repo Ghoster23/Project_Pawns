@@ -5,5 +5,8 @@ switch(room){
 		
 		x = gui_x;
 		y = gui_y;
+		
+		rm_x = mouse_x;
+		rm_y = mouse_y;
 	break;
 }

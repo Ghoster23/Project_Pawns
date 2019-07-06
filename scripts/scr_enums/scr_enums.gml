@@ -64,9 +64,11 @@ enum spell_type {
 }
 
 enum param_type {
+	none,
+	elemental,
 	target,
 	enact,
-	elemental
+	count
 }
 
 enum target_param {
@@ -89,13 +91,18 @@ enum enact_param {
 	kinesis
 }
 
+enum enact_mod {
+	time
+}
+
 enum elemental_param {
+	light,
 	air,
-	dark,
+	water,
 	earth,
 	fire,
-	light,
-	water
+	dark,
+	count
 }
 
 enum fluid {

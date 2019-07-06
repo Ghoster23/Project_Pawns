@@ -2,6 +2,7 @@ if(alarm[1] == -1){
 	var mx_wd = 0;
 	
 	ds_list_clear(tr_vals);
+	draw_set_font(font);
 	
 	for(var i = 0; i < ds_list_size(tr_vars); i++){
 		var vr = tr_vars[| i];

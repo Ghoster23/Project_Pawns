@@ -4,8 +4,6 @@ if(closed){
 }
 
 #region Update vars
-cm = 1;
-
 sc_wd = width  * cm;
 sc_hg = height * cm;
 

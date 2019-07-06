@@ -4,7 +4,7 @@ switch(room){
 						global.gui_ratio, global.gui_ratio,
 						0, c_white, 1);
 		
-		draw_text(gui_x, gui_y + 16, string(gui_x));
-		draw_text(gui_x, gui_y + 32, string(gui_y));
+		draw_text(gui_x, gui_y + 16, string(rm_x));
+		draw_text(gui_x, gui_y + 32, string(rm_y));
 	break;
 }

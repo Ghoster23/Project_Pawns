@@ -21,7 +21,7 @@ if(not booted) {
 	booted = true;
 }
 
-title = options[selected];
+cm = parent.cm;
 
 if(collapsed) {
 	height = bar_hg + 2;
@@ -30,3 +30,5 @@ if(collapsed) {
 }
 
 event_inherited();
+
+title = options[selected];
