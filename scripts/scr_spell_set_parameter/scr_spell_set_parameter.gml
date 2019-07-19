@@ -1,7 +1,7 @@
-///@argument spell_id
-///@argument id
-///@argument type
-///@argument value
+///@argument spell_id	(object_id)
+///@argument id			(ds_map id)
+///@argument type		(enum)
+///@argument value		(enum)
 {
 var _sp = argument0;
 var _id = argument1;
@@ -9,42 +9,30 @@ var _tp = argument2;
 var _vl = argument3;
 
 with _sp {
-	var _param = params[_id];
-	
-	var _current_tp = _param[? "Type"];
-	
-	var _clear_mods = false;
-	
-	if(_current_tp != _tp) {
-		ds_map_set(_param,  "Type", _tp);
-		
-		if(_current_tp != param_type.none) {
-			_clear_mods = true;
+	// If the parameter exists
+	if(ds_exists(_id, ds_type_map)) {
+		// If new type does not match current type
+		if(_id[? "Type"] != _tp) {
+			#region Clear Modifiers
+			var _mods = _id[? "Mods"];
 			
-			if(_tp == param_type.none) {
-				param_count -= 1;
+			while(_mods[| 0] != undefined) {
+				var _mod = _mods[| 0];
+				ds_list_delete(_mods, 0);
+				
+				ds_map_destroy(_mod);
 			}
-			
-		}else if(_tp != param_type.none) {
-			param_count += 1;
-		}
-	}
-	
-	if(_tp != param_type.none) {
-		ds_map_set(_param, "Value", _vl);
-	}else {
-		ds_map_set(_param, "Value",  -1);
-	}
-	
-	if(_clear_mods) {
-		for(var i = _id * 2; i < _id * 2 + _param[? "Mods"]; i++) {
-			var _mod = modifiers[i];
-			
-			ds_map_set(_mod,  "Type", param_type.none);
-			ds_map_set(_mod, "Value",              -1);
+			#endregion
 		}
 		
-		ds_map_set(_param, "Mods", 0);
+		scr_spell_parameter_set_attributes(_id, _tp, _vl);
+		return 1;
 	}
+	
+	show_debug_message("Parameter non-existent.")
+	return 0;
 }
+
+show_debug_message("Spell not found");
+return 0;
 }

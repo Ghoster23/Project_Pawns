@@ -1,20 +1,48 @@
 //@description Returns an array containing the spell information
-//@argument spell_object
+//@argument spell_id
 {
-var obj = argument0;
+var _obj = argument0;
 
-var spell = [];
+var _spell = []; // [ spell_type, parameter_count, parameter_array]
 
-spell[0] = obj.type;
-spell[1] = obj.param_count;
+if(instance_exists(_obj) and is_descended(_obj, obj_spell_base)) {
+	with _obj {
+		_spell[0] = type;
+		_spell[1] = param_count;
 
-var params = [];
+		var _params    = [];
+		var _converted =  0;
+		var _i = 0;
 
-for(var i = 0; i < spell[1]; i++){
-	params[i] = [obj.param_type[i],scr_spell_param_to_array(obj.param_value[i])];
+		while(_converted < param_count and _i < max_param_count){
+			var _map = params[_i];
+			
+			if(ds_exists(_map, ds_type_map) and _map[? "Type"] != param_type.none) {
+				var _param = []; // [parameter_type, parameter_value, modifier_count, modifier_array]
+
+				_param[0] = _map[?  "Type"];
+				_param[1] = _map[? "Value"];
+				var _mods = _map[?  "Mods"];
+				_param[2] = _mods;
+				
+				var _mod_array = [];
+
+				for(var _j = 0; _j < array_length_1d(_mods); _j++){
+					var _mod = modifiers[_mods[_j]];
+					_mod_array[_j] = [_mod[? "Type"], _mod[? "Value"], _mod[? "Level"]];
+				}
+
+				_param[3] = _mod_array;
+
+				_converted++;
+			}
+			
+			_i++;
+		}
+
+		_spell[2] = _params;
+
+		return _spell;
+	}
 }
-
-spell[2] = params;
-
-return spell;
 }
