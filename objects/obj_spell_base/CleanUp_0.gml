@@ -1,19 +1,9 @@
-var len = array_length_1d(params);
-
-for(var i = 0; i < len; i++) {
+#region Clean Parameters
+for(var i = 0; i < max_param_count; i++) {
 	var p = params[i];
 	
-	if(ds_exists(p, ds_type_map)) {
-		ds_map_destroy(p);
+	if(p != -1) {
+		scr_spell_parameter_delete(p);
 	}
 }
-
-len = array_length_1d(modifiers);
-
-for(var i = 0; i < len; i++) {
-	var m = modifiers[i];
-	
-	if(ds_exists(m, ds_type_map)) {
-		ds_map_destroy(m);
-	}
-}
+#endregion
