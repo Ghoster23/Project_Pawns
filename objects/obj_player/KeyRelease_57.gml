@@ -1,5 +1,5 @@
 //test spell
-var type  = spell_type.evocation;
+var type  = spell_types.evocation;
 
 var p1_m1 = [];
 var p1 = [target_param.touch, 0, [p1_m1]];

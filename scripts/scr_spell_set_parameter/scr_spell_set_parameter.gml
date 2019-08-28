@@ -16,16 +16,21 @@ with _sp {
 			#region Clear Modifiers
 			var _mods = _id[? "Mods"];
 			
-			while(_mods[| 0] != undefined) {
-				var _mod = _mods[| 0];
-				ds_list_delete(_mods, 0);
+			if(_mods != undefined and ds_exists(_mods, ds_type_list)) {
+				while(_mods[| 0] != undefined) {
+					var _mod = _mods[| 0];
+					ds_list_delete(_mods, 0);
 				
-				ds_map_destroy(_mod);
+					ds_map_destroy(_mod);
+				}
+			}else {
+				_id[? "Mods"] = ds_list_create();
+				show_debug_message("Had to create a modifier list as it was missing.");
 			}
 			#endregion
 		}
 		
-		scr_spell_parameter_set_attributes(_id, _tp, _vl);
+		scr_spell_parameter_set(_id, _tp, _vl);
 		return 1;
 	}
 	

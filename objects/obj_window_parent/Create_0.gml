@@ -8,7 +8,7 @@ height = 200;
 
 bar_hg  = 36; // Window header height
 
-line_hg = 16; // Line height for windows that have them (ex. tacking variables)
+line_hg = 16; // Line height for windows that have them (ex. tracking variables)
 
 margin  = 12; // Distance between window border and its elements
 

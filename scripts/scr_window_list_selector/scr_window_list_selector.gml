@@ -52,9 +52,6 @@ switch select_popup[_si] {
 				
 				width = _wd;
 				
-				rel_x = x - other.x;
-				rel_y = y - other.y;
-				
 				alarm[0] = 5;
 			}
 		}
@@ -65,14 +62,19 @@ switch select_popup[_si] {
 		
 		if(instance_exists(_popup)) {
 			with _popup {
-				x = other.x + rel_x;
-				y = other.y + rel_y;
+				x = _x1;
+				y = _y1;
+				
+				title = _opt;
+				width = _wd;
 				
 				in_front = other.in_front;
 				
 				if(options != _arr) {
 					options  = _arr;
 					op_count = _len;
+					
+					booted = false;
 					
 					selected = 0;
 				}

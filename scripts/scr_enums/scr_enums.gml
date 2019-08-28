@@ -54,45 +54,34 @@ enum status {
 	count
 }
 
-enum action {
-	burn,
-	smash
+#region Spell System
+enum spell_types {
+	evocation,
+	count
 }
 
-enum spell_type {
-	evocation
+enum spell_element {
+	parameter,
+	modifier,
+	count
 }
 
+enum spell_slot_states {
+	free,
+	occupied,
+	blocked,
+	changed,
+	cleared,
+	count
+}
+
+#region Parameters
 enum param_type {
 	none,
 	elemental,
 	target,
 	enact,
 	count
-}
-
-enum target_param {
-	line,
-	aoe,//TODO Maybe rethink this one
-	touch,
-	wall
-	//Consider how you'd add seeking
-}
-
-enum target_mod {
-	range,
-	await
-	//Maybe add a 'await' target -> consider how to make triggers
-}
-
-enum enact_param {
-	create,
-	destroy,
-	kinesis
-}
-
-enum enact_mod {
-	time
 }
 
 enum elemental_param {
@@ -104,6 +93,34 @@ enum elemental_param {
 	dark,
 	count
 }
+
+enum target_param {
+	line,
+	aoe,//TODO Maybe rethink this one
+	touch,
+	wall
+	//Consider how you'd add seeking
+}
+
+enum enact_param {
+	create,
+	destroy,
+	kinesis
+}
+#endregion
+
+#region Modifiers
+enum target_mod {
+	range,
+	await
+	//Maybe add a 'await' target -> consider how to make triggers
+}
+
+enum enact_mod {
+	time
+}
+#endregion
+#endregion
 
 enum fluid {
 	water,

@@ -19,7 +19,4 @@ options  = 0; // Array of options
 op_count = 0; // Number of options
 selected = 0; // Selected option
 
-rel_x = 0;
-rel_y = 0;
-
 booted = false;

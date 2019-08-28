@@ -5,6 +5,7 @@
 {
 var _id = argument0;
 
+// If parameter exists
 if(ds_exists(_id, ds_type_map)) {
 	if(argument1 != undefined) ds_map_set(_id,  "Type", argument1);
 	if(argument2 != undefined) ds_map_set(_id, "Value", argument2);

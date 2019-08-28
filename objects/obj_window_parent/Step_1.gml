@@ -26,11 +26,11 @@ switch mov_state {
 		#region Drag Start
 		if(moveable and
 			scr_mouse_hold(x1, y1, x2, y1 + bar_hg * cm) and
-							obj_window_controller.grabbed == noone){
+							obj_windows_controller.grabbed == noone){
 			dist_x = x - obj_cursor.gui_x;
 			dist_y = y - obj_cursor.gui_y;
 			
-			obj_window_controller.grabbed = id;
+			obj_windows_controller.grabbed = id;
 			
 			mov_state = 1;
 		}
@@ -44,7 +44,7 @@ switch mov_state {
 		
 		if(!mouse_check_button(mb_left)){
 			mov_state = 0;
-			obj_window_controller.grabbed = noone;
+			obj_windows_controller.grabbed = noone;
 		}
 		#endregion
 	break;

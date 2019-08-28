@@ -4,7 +4,8 @@
     "mvc": "1.1",
     "name": "9dd34b78-c07c-479e-b569-0f19ecdc71ed",
     "children": [
-        "a4376fb0-c64d-4a20-91aa-4c34ed145b83"
+        "a4376fb0-c64d-4a20-91aa-4c34ed145b83",
+        "63431441-c05c-4f25-af7f-4495f014eef6"
     ],
     "filterType": "GMScript",
     "folderName": "Styles",

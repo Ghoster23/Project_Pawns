@@ -339,7 +339,7 @@ switch(command){
 			break;
 		}
 		
-		with(obj_window_controller){
+		with(obj_windows_controller){
 			var fnd = noone;
 				
 			#region Try to find a tracker
@@ -358,8 +358,8 @@ switch(command){
 					tr_inst = iid;
 					ds_list_add(tr_vars, args[1]);
 					tr_cnt++;
-					x = obj_cursor.x;
-					y = obj_cursor.y;
+					x = obj_cursor.gui_x;
+					y = obj_cursor.gui_y;
 				}
 				#endregion
 			}else {

@@ -56,7 +56,7 @@ if(mov_trg != noone and move == 2){
 if(act_cur != -1){
 	switch act_stt {
 		case 0: //Initiate action
-			var params = scr_action_start(act_cur);
+			/*var params = scr_action_start(act_cur);
 			
 			act_trgs   = params[0];
 			act_params = params[1];
@@ -65,7 +65,7 @@ if(act_cur != -1){
 				act_cur = -1;
 			}else {
 				act_stt = 1;
-			}
+			}*/
 		break;
 		
 		case 1: //Choose target
@@ -73,7 +73,7 @@ if(act_cur != -1){
 		break;
 		
 		case 2: //Carry out action
-			scr_action_do(act_cur,act_trg,act_params);
+			//scr_action_do(act_cur,act_trg,act_params);
 		break;
 		
 		case 3: //End action

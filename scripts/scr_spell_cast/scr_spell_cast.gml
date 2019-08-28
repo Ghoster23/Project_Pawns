@@ -12,7 +12,7 @@ var params = spell_ar[2];
 var spell;
 
 switch type {
-	case spell_type.evocation:
+	case spell_types.evocation:
 		spell = instance_create_layer(x,y,"Instances",obj_spell_evocation);
 	break;
 }

@@ -10,7 +10,7 @@ var elm_sep = (ihg - 24 * cm * 5) div 4;
 
 #region Save
 if(scr_window_button(lf, yy, rg, yy + elm_hg, "Save")) {
-	with(obj_lvled_controller) {
+	with(obj_lvl_editor_controller) {
 		next_state = "save";
 	}
 }
@@ -20,7 +20,7 @@ yy += elm_hg + elm_sep;
 
 #region Load
 if(scr_window_button(lf, yy, rg, yy + elm_hg, "Load")) {
-	with(obj_lvled_controller) {
+	with(obj_lvl_editor_controller) {
 		next_state = "load";
 	}
 }
@@ -30,7 +30,7 @@ yy += elm_hg + elm_sep;
 
 #region Test
 if(scr_window_button(lf, yy, rg, yy + elm_hg, "Test")) {
-	with(obj_lvled_controller) {
+	with(obj_lvl_editor_controller) {
 		next_state = "test";
 	}
 }
