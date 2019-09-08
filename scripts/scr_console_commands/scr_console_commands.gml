@@ -25,47 +25,22 @@ command_help[7]="list_macros() -> prints a list of all pre-programmed macros";
 command_list[8]="create_instance_at_cursor";
 command_help[8]="create_instance_at_cursor(object_name)-> spawns instance at cursor";
 
-command_list[9]="pause";
-command_help[9]="pause()-> pauses and unpauses the game";
+command_list[9]="info";
+command_help[9]="info(keyword)-> provides information on a topic, provide ? to list keywords\n";
 
-command_list[10]="killall_active";
-command_help[10]="killall_active()-> kills all active enemies";
+command_list[10]="instance_get_var";
+command_help[10]="instance_get_var(instance_id,variable_name)-> Gets the value of a variable in an instance.\n";
 
-command_list[11]="entity_stat_set";
-command_help[11]="entity_stat_set(instance_id/object_name, stat, value)-> changes a stat of an entity or entities of a type\n Use info(stats) for details.\n";
+command_list[11]="instance_set_var";
+command_help[11]="instance_set_var(instance_id,variable_name,value)-> Sets the value of a variable in an instance.\n";
 
-command_list[12]="info";
-command_help[12]="info(keyword)-> provides information on a topic, provide ? to list keywords\n";
+command_list[12]="instance_track_var";
+command_help[12]="instance_track_var(instance_id,variable_name)-> Creates a window that tracks the instance variable if none exists or adds it to an existing tracker";
 
-command_list[13]="create_item_at_cursor";
-command_help[13]="create_item_at_cursor(type,item,amount)-> creates the specified item at the cursor.\n";
+command_list[13]="debug_overlay";
+command_help[13]="debug_overlay() -> toggles the display of the debug overlay";
 
-command_list[14]="list_items";
-command_help[14]="list_items(type)-> lists the items of a given type.\n";
-
-command_list[15]="activate_enemy";
-command_help[15]="activate_enemy(instance_id)-> Activates an enemy.\n";
-
-command_list[16]="instance_get_var";
-command_help[16]="instance_get_var(instance_id,variable_name)-> Gets the value of a variable in an instance.\n";
-
-command_list[17]="instance_set_var";
-command_help[17]="instance_set_var(instance_id,variable_name,value)-> Sets the value of a variable in an instance.\n";
-
-command_list[18]="instance_track_var";
-command_help[18]="instance_track_var(instance_id,variable_name)-> Creates a window that tracks the instance variable if none exists or adds it to an existing tracker";
-
-command_list[19]="debug_overlay";
-command_help[19]="debug_overlay() -> toggles the display of the debug overlay";
-
-command_list[20]="check_controller";
-command_help[20]="check_controller() -> checks for controller connection";
-
-command_list[21]="entity_status_apply";
-command_help[21]="entity_status_apply(instance,status,duration) -> applies a status effect to an entity";
+command_list[14]="check_controller";
+command_help[14]="check_controller() -> checks for controller connection";
 
 number_of_commands = array_length_1d(command_list);
-
-
-
-

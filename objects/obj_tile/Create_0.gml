@@ -25,11 +25,5 @@ srch_rng = 0;
 fld = [-1, -1]; //Fluid on the tile [fluid type, timer]
 #endregion
 
-#region Drawing
-tl_spr_id    = 0;
-
-tl_map_data = tilemap_get_at_pixel(global.tl_map_tiles, x, y);
-#endregion
-
 max_hp = 3;
 hp     = 3;

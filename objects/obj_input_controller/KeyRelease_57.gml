@@ -1,0 +1,1 @@
+scr_brd_create(5, 5, 5);

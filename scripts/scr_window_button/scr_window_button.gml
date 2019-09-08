@@ -120,8 +120,7 @@ if(_hov){
 		case 1: //Outline
 		break;
 		
-		case 2: //Draw over
-			
+		case 2:			
 		break;
 	}
 }

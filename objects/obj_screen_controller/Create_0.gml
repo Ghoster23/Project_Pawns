@@ -9,15 +9,17 @@ monitor_dimension_options = ["1080x720", "1280x800", "1280x1024", "1366x768", "1
 monitor_width  = [1080, 1280, 1280, 1366, 1440, 1600, 1920, display_get_width()];
 monitor_heigth = [ 720,  800, 1024,  768,  900,  900, 1080, display_get_height()];
 
-global.fullscreen = window_get_fullscreen();
+dimensions = 7;
+
+fullscreen   = window_get_fullscreen();
 pixelperfect = true;
 
 global.gui_ratio = 1;
 
 #region Init
 //Monitor
-global.Monitor_wd = monitor_width[7];  //Monitor width
-global.Monitor_hg = monitor_heigth[7]; //Monitor height
+global.Monitor_wd = monitor_width[dimensions];  //Monitor width
+global.Monitor_hg = monitor_heigth[dimensions]; //Monitor height
 
 //lvl_rooms = [rm_start, room0];
 

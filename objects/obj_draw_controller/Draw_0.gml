@@ -65,6 +65,7 @@ if(ds_exists(ds_depthgrid, ds_type_grid)){
 }
 #endregion
 
+/*
 #region Highlighted Tiles
 var cl = global.cell_size;
 
@@ -105,3 +106,15 @@ var sl_p = obj_board_controller.sl_tl;
 
 draw_rectangle(sl_p[0]*cl-1,sl_p[1]*cl-1,(sl_p[0]+1)*cl+1,(sl_p[1]+1)*cl+1,true);
 #endregion
+*/
+
+if(instance_exists(obj_board_controller)) {
+	var _selected = obj_board_controller.sl_cell;
+	
+	if(_selected[0] != -1) {
+		var _x = _selected[1] * global.cell_size;
+		var _y = (_selected[0] + _selected[2]) * global.cell_size * 0.75;
+		
+		draw_sprite(spr_highlighted_cell, 0, _x, _y);
+	}
+}

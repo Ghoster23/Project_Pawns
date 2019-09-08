@@ -3,32 +3,18 @@ scr_unique_inst();
 #region Board
 global.cell_size = 64;
 
-h_cells = room_width  div 64;
-v_cells = room_height div 64;
+board_width  = 0;
+board_depth  = 0;
+board_height = 0;
 
-sl_tl = [-1, -1];
+x_cells = 0;
+y_cells = 0;
+z_cells = 0;
 
-global.dg_tile = ds_grid_create(h_cells,v_cells);
-global.dg_objs = ds_grid_create(h_cells,v_cells);
+sl_cell = [-1, -1, -1];
 
-#region Tile Maps
-global.tl_map_fluids = layer_tilemap_get_id(1);
-global.tl_map_tiles  = layer_tilemap_get_id(2);
-#endregion
-
-var cl = global.cell_size;
-
-for(var i = 0; i < h_cells; i++){
-	for(var j = 0; j < v_cells; j++){
-		var tile = instance_create_layer(i * cl, j * cl, 3, obj_tile);
-		global.dg_tile[# i, j] = tile;
-		global.dg_objs[# i, j] = noone;
-	}
-}
-
-with obj_tile {
-	init_state = 1;
-}
+global.dg_tile = -1;
+global.dg_objs = -1;
 
 global.brd_stt = 0;
 #endregion
@@ -48,4 +34,6 @@ mov_pawn = noone;
 mov_list = -1;
 
 act_pawn = noone;
+
+run_state = 0;
 #endregion

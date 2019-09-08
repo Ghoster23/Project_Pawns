@@ -11,8 +11,10 @@ ________________________________________________________________________________
 image_xscale = 1/2.5;
 image_yscale = 1/2.5;
 
-display_w = display_get_gui_width();
-display_h = display_get_gui_height();
+display_w = global.gui_WD;
+display_h = global.gui_HG;
+
+fnt_console = fn_ide;
 
 //================ console =================
 text_padding = 30;
@@ -25,7 +27,7 @@ console_text += " (LCtrl + Key -> macro): type 'list_macros()' for help         
 console_max_h = 800;
 
 show_log          = false;
-log_h             = string_height_ext(console_text,0,console_w - text_padding);
+log_h             = string_height_ext(console_text, 0, console_w - text_padding);
 scroll_offset     = 0;
 scroll_max_offset = 0;
 
@@ -46,7 +48,7 @@ cmdline_text = "";
 selected = false;
 
 tp_visible = true;
-alarm_set(0,room_speed*0.5);
+alarm_set(0, room_speed * 0.5);
 
 //================ log button =================
 logbtn_w      = 50; 
@@ -56,12 +58,12 @@ logbtn_left   = logbtn_right - logbtn_w;
 logbtn_top    = cmdline_top;
 
 tri_padding = 15;
-tri1x = logbtn_left + tri_padding;
+tri1x = logbtn_left   + tri_padding;
 tri1y = logbtn_bottom - tri_padding;
-tri2x = logbtn_right - tri_padding;
+tri2x = logbtn_right  - tri_padding;
 tri2y = logbtn_bottom - tri_padding;
-tri3x = logbtn_left + logbtn_w/2;
-tri3y = logbtn_top + tri_padding;
+tri3x = logbtn_left   + logbtn_w/2;
+tri3y = logbtn_top    + tri_padding;
 
 //================ scroll bar =================
 scrollbar_offset = 0;

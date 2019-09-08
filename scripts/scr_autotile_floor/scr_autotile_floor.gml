@@ -1,13 +1,13 @@
 {
 var i_index = 0;
 	
-var u   = adj[0]; // up
+var u  = adj[0]; // up
 var ur = adj[1]; // up-right
-var r   = adj[2]; // right
+var r  = adj[2]; // right
 var dr = adj[3]; // down-right
 var d  = adj[4]; // down
 var dl = adj[5]; // down-left
-var l   = adj[6]; // left
+var l  = adj[6]; // left
 var ul = adj[7]; // up-left
     
 // Check adjacent side existence
@@ -70,7 +70,7 @@ switch(edges)
     case 7:
         switch(corners)
         {
-            case 0: i_index = 9; break;
+            case 0: i_index =  9; break;
             case 2: i_index = 10; break;
             case 4: i_index = 11; break;
             case 6: i_index = 12; break;
@@ -113,25 +113,25 @@ switch(edges)
     case 14:
         switch(corners)
         {
-            case 0: i_index = 27; break;
-            case 4: i_index = 28; break;
-            case 8: i_index = 29; break;
+            case  0: i_index = 27; break;
+            case  4: i_index = 28; break;
+            case  8: i_index = 29; break;
             case 12: i_index = 30; break;
         }
     break;
     case 15:
         switch(corners)
         {
-            case 0: i_index = 31; break;
-            case 1: i_index = 32; break;
-            case 2: i_index = 33; break;
-            case 3: i_index = 34; break;
-            case 4: i_index = 35; break;
-            case 5: i_index = 36; break;
-            case 6: i_index = 37; break;
-            case 7: i_index = 38; break;
-            case 8: i_index = 39; break;
-            case 9: i_index = 40; break;
+            case  0: i_index = 31; break;
+            case  1: i_index = 32; break;
+            case  2: i_index = 33; break;
+            case  3: i_index = 34; break;
+            case  4: i_index = 35; break;
+            case  5: i_index = 36; break;
+            case  6: i_index = 37; break;
+            case  7: i_index = 38; break;
+            case  8: i_index = 39; break;
+            case  9: i_index = 40; break;
             case 10: i_index = 41; break;
             case 11: i_index = 42; break;
             case 12: i_index = 43; break;
