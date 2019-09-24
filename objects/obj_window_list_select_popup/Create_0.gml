@@ -9,6 +9,8 @@ height = 0;
 moveable  = false;
 closeable = false;
 
+relative_pos = true;
+
 collapsed = true;
 
 full_height = height;

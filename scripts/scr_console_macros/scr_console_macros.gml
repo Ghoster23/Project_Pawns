@@ -37,7 +37,7 @@ if(argument_count != 0){
 /*var command_string = macros[? keyboard_lastkey];
 if(is_undefined(command_string)){
 	console_text += "No macro registered for keycode: " + scr_keyname(keyboard_lastkey) + "\n";
-	scr_scroll2max();
+	scr_console_scroll2max();
 }
 else{
 	scr_console_execute_command(command_string);

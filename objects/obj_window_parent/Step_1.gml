@@ -3,24 +3,6 @@ if(closed){
 	exit;
 }
 
-#region Update vars
-sc_wd = width  * cm;
-sc_hg = height * cm;
-
-x1 = x;
-y1 = y;
-
-x2 = x + sc_wd;
-y2 = y + sc_hg;
-
-sc_margin = margin * cm;
-
-rg = x2 - sc_margin;
-tp = y1 + sc_margin + bar_hg * cm;
-lf = x1 + sc_margin;
-bt = y2 - sc_margin;
-#endregion
-
 switch mov_state {
 	case 0:	
 		#region Drag Start
@@ -45,6 +27,29 @@ switch mov_state {
 		if(!mouse_check_button(mb_left)){
 			mov_state = 0;
 			obj_windows_controller.grabbed = noone;
+		}
+		#endregion
+	break;
+}
+
+switch resize_state {
+	case 0:	
+		#region Drag Start
+		if(resizeable and
+			scr_mouse_hold(x2 - 24 * cm, y2 - 24 * cm, x2, y2) and
+							obj_windows_controller.grabbed == noone){			
+			resize_state = 1;
+		}
+		#endregion
+	break;
+	
+	case 1:
+		#region Drag On-Going
+		width  = max( min_width, (obj_cursor.gui_x - x) / cm);
+		height = max(min_height, (obj_cursor.gui_y - y) / cm);
+		
+		if(!mouse_check_button(mb_left)){
+			resize_state = 0;
 		}
 		#endregion
 	break;

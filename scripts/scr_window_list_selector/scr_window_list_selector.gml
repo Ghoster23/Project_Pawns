@@ -61,10 +61,7 @@ switch select_popup[_si] {
 		var _popup = select_popup[_si];
 		
 		if(instance_exists(_popup)) {
-			with _popup {
-				x = _x1;
-				y = _y1;
-				
+			with _popup {		
 				title = _opt;
 				width = _wd;
 				

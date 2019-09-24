@@ -1,7 +1,7 @@
 ///@argument text
-///@argument x1
-///@argument y1
-///@argument max_char
+///@argument x
+///@argument y
+///@argument width
 ///@argument text_box_ind
 ///@argument xscale_optional
 ///@argument yscale_optional

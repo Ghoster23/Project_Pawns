@@ -31,18 +31,21 @@ switch(global.brd_stt) {
 		}
 		
 		if(tp != -1){
-			var brd_layer = global.dl_board_layers[sl_cell[0]];
-			in = brd_layer[# sl_cell[1], sl_cell[2]];
+			var brd_layer = global.dl_board_layers[| sl_cell[0]];
 			
-			if(in != noone){
-				if(not instance_exists(in)){
-					brd_layer[# sl_cell[1], sl_cell[2]] = noone;
-					in = noone;
+			if(brd_layer != undefined) {
+				in = brd_layer[# sl_cell[1], sl_cell[2]];
+			
+				if(in != noone){
+					if(not instance_exists(in)){
+						brd_layer[# sl_cell[1], sl_cell[2]] = noone;
+						in = noone;
+					}
 				}
-			}
 			
-			slt_inst = in;
-			slt_type = tp;
+				slt_inst = in;
+				slt_type = tp;
+			}
 		}
 		#endregion
 

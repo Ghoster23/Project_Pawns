@@ -11,6 +11,7 @@ bt_hparam = c_gray;
 
 tk_type   = 2;
 tk_tparam = spr_HUD_9SB;
+tk_tick   = spr_window_tick;
 
 font = -1;
 }

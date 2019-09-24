@@ -8,8 +8,8 @@ ___________________________| ADD A NEW COMMAND! |_______________________________
 ___________________________________________________________________________________________
 */
 
-image_xscale = 1/2.5;
-image_yscale = 1/2.5;
+image_xscale = 1;
+image_yscale = 1;
 
 display_w = global.gui_WD;
 display_h = global.gui_HG;

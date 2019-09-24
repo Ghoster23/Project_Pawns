@@ -1,0 +1,1 @@
+scr_window_create(obj_wnd_console, scr_wnd_st_tkg_init, obj_cursor.gui_x, obj_cursor.gui_y);

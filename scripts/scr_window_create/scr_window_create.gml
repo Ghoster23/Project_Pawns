@@ -5,6 +5,11 @@
 {
 var obji = argument[0];
 
+if(not instance_exists(obj_windows_controller)) {
+	show_debug_message("Failed to create a window due to missing controller.");
+	return noone;
+}
+
 if(not is_descended(obji, obj_window_parent)) {
 	show_debug_message("Failed to create a window due to invalid object id.");
 	return noone;

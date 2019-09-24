@@ -1,5 +1,7 @@
 if(not drawing or closed){ exit; }
 
+scr_window_position_update();
+
 #region Window Frame and Title
 if(style == -1){
 	draw_set_color(c_white);

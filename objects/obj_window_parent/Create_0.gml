@@ -47,8 +47,17 @@ dist_x = 0;
 dist_y = 0;
 #endregion
 
-closeable = true;  // Can the window be closed
-closed    = false; // has the window been closed
+#region Resize
+resizeable = false; // Can be resized
+
+resize_state = 0;
+
+min_width  = width;
+min_height = height;
+#endregion
+
+closeable  = true;  // Can the window be closed
+closed     = false; // has the window been closed
 
 #region Style
 style_init = -1; // Script that initializes style variables

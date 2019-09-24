@@ -11,13 +11,13 @@ if(argument_count < 6){ return; }
 
 var _vl = argument[0];
 
-var _x  = argument[1];
-var _y  = argument[2];
+var _x1 = argument[1];
+var _y1 = argument[2];
 var _wd = argument[3];
 var _hg = argument[4];
 
-var _x2 = _x1 + _sz;
-var _y2 = _y1 + _sz;
+var _x2 = _x1 + _wd;
+var _y2 = _y1 + _hg;
 
 var _label = argument[5];
 
@@ -41,43 +41,41 @@ if(argument_count > 9){
 	_ys = argument[9];
 }
 
-var _res = 0;
-
-if(point_in_rectangle(obj_cursor.gui_x, obj_cursor.gui_y, _x, _y, _x2, _y2)){	
+// Clicking
+if(point_in_rectangle(obj_cursor.gui_x, obj_cursor.gui_y, _x2 - _hg, _y1, _x2, _y2)){	
 	if(in_front and mouse_check_button_released(mb_left)){
-		_res = 1;
+		_vl = !_vl;
 	}
 }
 
-draw_set_color(c_black);
+// Draw Label
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 
-draw_text(_x1, _y1 + _sz / 2 - 2, _label);
+draw_text(_x1, _y1 + _hg / 2 - 2, _label);
 
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 
-var _label_wd = string_width(_label);
-
+// Draw Box
 switch _type {
 	case 0: //Basic
 		draw_set_color(_tparam);
-		draw_rectangle(_x1, _y1, _x2, _y2, true);
+		draw_rectangle(_x2 - _hg, _y1, _x2, _y2, true);
 		draw_set_color(c_white);
 	break;
 	
 	case 1: //Sprite
-		draw_sprite_stretched(_tparam, -1, 
-							  _x1 + _wd / 2 - sprite_xoffset + sprite_width  / 2, 
-							  _y1 + _hg / 2 - sprite_yoffset + sprite_height / 2, 
-							  _wd, _hg);
+		draw_sprite_stretched(_tparam, -1, _x2 - _hg, _y1, _hg, _hg);
 	break;
 	
 	case 2: //9SB
-		scr_9SB_ext(_tparam, _x1, _y1, _x2, _y2, _xs, _ys);
+		scr_9SB_ext(_tparam, _x2 - _hg, _y1, _x2, _y2, _xs, _ys);
 	break;
 }
 
-return _res;
+// Draw Tick
+if(_vl) draw_sprite_stretched(tk_tick, -1, _x2 - _hg, _y1, _hg, _hg);
+
+return _vl;
 }
