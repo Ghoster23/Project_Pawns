@@ -1,7 +1,7 @@
 alarm[1] = 20;
 
-if(cmd_cursor == "_") {
-	cmd_cursor = "";
+if(cursor == "_") {
+	cursor = "";
 }else {
-	cmd_cursor = "_";
+	cursor = "_";
 }

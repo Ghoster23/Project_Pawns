@@ -40,7 +40,7 @@ if(array_length_1d(_info) > 1) {
 		#endregion
 		#endregion
 		
-		_text = _cmd;
+		_text = _cmd + "\n";
 		
 		#region Commands
 		switch(_cmd){
@@ -59,12 +59,13 @@ if(array_length_1d(_info) > 1) {
 	
 			case "clear":
 				_text = "";
-				ds_map_clear(cmd_text);
+				ds_list_clear(cmd_text);
 			break;
 	
 			case "debug_overlay":
 				debug_overlay = !debug_overlay;
 				show_debug_overlay(debug_overlay);
+				_text += "Debug overlay turned " + (debug_overlay ? "on." : "off.");
 			break;
 	
 			case "get_mouse_coords":
