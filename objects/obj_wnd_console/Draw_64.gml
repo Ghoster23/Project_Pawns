@@ -67,36 +67,40 @@ var _written = 0;
 var _line_cnt = 0;
 
 // For each entry
-for(var i = txt_start; txt_start < txt_count; i++) {
-	if(txt_line_cnt < txt_line_max) {
+for(var i = txt_start; i < txt_count; i++) {
+	if(txt_line_cnt >= txt_line_max) {
 		break;
 	}
 	
-	_entry = txt_memory[| i];
+	_entry     = txt_memory[| i];
 	
-	// Draw header
-	draw_text(lf, txt_y + txt_line_hg * txt_line_cnt, "[" + string(i) + "]: ");
-	
-	// Draw text
-	while(_written < _entry_len and _line_cnt < txt_line_max) {
-		var _line_len = min(_entry_len - _written, txt_char_max);
+	if(not is_undefined(_entry)) {
+		_entry_len = string_length(_entry);
 		
-		var _line = string_copy(_entry, _written, _line_len);
+		// Draw header
+		draw_text(lf, txt_y + txt_line_hg * txt_line_cnt, "[" + string(i) + "]: ");
 		
-		#region Account for \n
-		var _n_ln = string_pos("\n", _line);
-		
-		if(_n_ln != 0) {
-			_line_len = _written + _n_ln + 1;
-			_line     = string_copy(_entry, _written, _line_len - 1);
+		// Draw text
+		while(_written < _entry_len and _line_cnt < txt_line_max) {
+			var _line_len = min(_entry_len - _written, txt_char_max);
+			
+			var _line = string_copy(_entry, _written, _line_len);
+			
+			#region Account for \n
+			var _n_ln = string_pos("\n", _line);
+			
+			if(_n_ln != 0) {
+				_line_len = _written + _n_ln + 1;
+				_line     = string_copy(_entry, _written, _line_len - 1);
+			}
+			#endregion
+			
+			// Draw line
+			draw_text(txt_x, txt_y + txt_line_hg * _line_cnt, _line);
+			
+			_written  += _line_len;
+			_line_cnt += 1;
 		}
-		#endregion
-		
-		// Draw line
-		draw_text(txt_x, txt_y + txt_line_hg * _line_cnt, _line);
-		
-		_written  += _line_len;
-		_line_cnt += 1;
 	}
 }
 #endregion
@@ -129,12 +133,12 @@ if(sgg_state == 1) {
 	for(var i = -1; i < sgg_count; i++) {
 		var j = i + 1;
 	
-		var _txt_y = sgg_y + txt_line_hg * j; // Text Y
+		var _txt_y = sgg_y + margin + txt_line_hg * j; // Text Y
 	
 		#region Highlight Selection
 		if(i == sgg_selected) {
 			draw_set_alpha(0.5);
-			draw_rectangle(sgg_x, _txt_y - char_hg * 0.5, sgg_x + iwd, _txt_y + char_hg * 0.5, false);
+			draw_rectangle(sgg_x + margin, _txt_y - char_hg * 0.5, sgg_x + iwd, _txt_y + char_hg * 0.5, false);
 			draw_set_alpha(1);
 		}
 		#endregion
@@ -143,9 +147,9 @@ if(sgg_state == 1) {
 		if(i == -1) {
 			_len = string_length(sgg_line);
 			_cmd = string_copy(sgg_line, max(0, _len - max_chars), min(_len, max_chars));
-			draw_text(sgg_x, _txt_y, _cmd);
+			draw_text(sgg_x + margin, _txt_y, _cmd);
 		}else {
-			draw_text(sgg_x, _txt_y, sgg_array[i]);
+			draw_text(sgg_x + margin, _txt_y, sgg_array[i]);
 		}
 		#endregion
 	}

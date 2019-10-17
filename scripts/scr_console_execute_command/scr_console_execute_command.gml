@@ -59,7 +59,8 @@ if(array_length_1d(_info) > 1) {
 	
 			case "clear":
 				_text = "";
-				ds_list_clear(cmd_text);
+				ds_list_clear(txt_memory);
+				txt_count = 0;
 			break;
 	
 			case "debug_overlay":
@@ -275,8 +276,8 @@ if(array_length_1d(_info) > 1) {
 		}
 		#endregion
 		
-		ds_list_add(cmd_memory, _str); // Save executed command to memory
-		cmd_memcnt++;
+		ds_list_add(inp_memory, _str); // Save executed command to memory
+		inp_memcnt++;
 		
 	// Command not found		
 	}else {
